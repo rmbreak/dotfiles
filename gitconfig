@@ -1,0 +1,7 @@
+[user]
+	email = mack.stump@gmail.com
+	name = Mack Stump
+[alias]
+	lg = log --pretty=oneline --abbrev-commit --graph --all --decorate
+[color]
+	ui = true
