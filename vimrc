@@ -45,6 +45,7 @@ au VimResized * :wincmd =
 
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>ef :execute ":vsplit " . $HOME . "/.vim/ftplugin/" . &filetype . ".vim"<cr>
+nnoremap <leader>es :execute ":vsplit " . $HOME . "/.zshrc"<cr>
 
 " j and k within a wrap
 noremap j gj

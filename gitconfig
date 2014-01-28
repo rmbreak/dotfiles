@@ -2,6 +2,9 @@
 	email = mack.stump@gmail.com
 	name = Mack Stump
 [alias]
+    s  = status
 	lg = log --pretty=oneline --abbrev-commit --graph --all --decorate
 [color]
 	ui = true
+[core]
+	editor = vim
