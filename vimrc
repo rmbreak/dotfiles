@@ -1,8 +1,17 @@
-execute pathogen#infect()
-filetype plugin indent on
 set nocompatible
+filetype plugin indent on
 set t_Co=256 " Support 256 colors     
 
+" Bundles ---------------------------- {{{
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+Bundle 'gmarik/vundle'
+
+Bundle 'git@github.com:godlygeek/tabular.git'
+Bundle 'git@github.com:scrooloose/nerdtree.git'
+Bundle 'git@github.com:scrooloose/syntastic.git'
+Bundle 'git@github.com:tpope/vim-fugitive.git'
+" }}}
 " Leader ---------------------------- {{{
 let mapleader = ","
 let maplocalleader = "\\"
