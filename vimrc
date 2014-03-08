@@ -1,6 +1,6 @@
 set nocompatible
 filetype plugin indent on
-set t_Co=256 " Support 256 colors     
+set t_Co=256 " Support 256 colors
 
 " Bundles ---------------------------- {{{
 set rtp+=~/.vim/bundle/vundle/
@@ -20,6 +20,7 @@ let maplocalleader = "\\"
 syntax on
 set encoding=utf-8
 set expandtab
+set list
 set listchars=eol:¬
 set number
 set splitright
@@ -29,6 +30,18 @@ set ts=4
 set sw=4
 set wrap
 " }}}
+" NERDTree --------------------------- {{{
+noremap <F2> :NERDTreeToggle<cr>
+" }}}
+
+augroup trailing
+    au!
+    au InsertEnter * :set listchars-=trail:⌴
+    au InsertLeave * :set listchars+=trail:⌴
+augroup END
+
+" Clean trailing whitespace
+nnoremap <leader>ww mz:%s/\s\+$//<cr>:let @/=''<cr>`z
 
 if ! has('gui_running')
     set ttimeoutlen=10
