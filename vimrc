@@ -7,6 +7,7 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
 
+Bundle 'git@github.com:Lokaltog/powerline.git', {'rtp': 'powerline/bindings/vim/'}
 Bundle 'git@github.com:godlygeek/tabular.git'
 Bundle 'git@github.com:scrooloose/nerdtree.git'
 Bundle 'git@github.com:scrooloose/syntastic.git'
@@ -34,7 +35,14 @@ set wrap
 noremap <F2> :NERDTreeToggle<cr>
 " }}}
 
-au BufWritePost .vimrc source %
+set notimeout
+set ttimeout
+set ttimeoutlen=10
+
+augroup reload_vimrc
+    au!
+    au BufWritePost $MYVIMRC nested source $MYVIMRC
+augroup END
 
 augroup trailing
     au!
@@ -44,20 +52,6 @@ augroup END
 
 " Clean trailing whitespace
 nnoremap <leader>ww mz:%s/\s\+$//<cr>:let @/=''<cr>`z
-
-if ! has('gui_running')
-    set ttimeoutlen=10
-    augroup FastEscape
-        autocmd!
-        au InsertEnter * set timeoutlen=0
-        au InsertLeave * set timeoutlen=1000
-    augroup END
-endif
-
-let $PYTHONPATH="/usr/lib/python3.3/site-packages"
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
 
 set laststatus=2 " Always display the statusline in all windows
 set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
@@ -82,6 +76,9 @@ noremap <c-h> <c-w>h
 noremap <c-j> <c-w>j
 noremap <c-k> <c-w>k
 noremap <c-l> <c-w>l
+
+" Close all but this window
+nnoremap <leader>tw :on<cr>
 
 " Keep search matches in the middle of the window and open fold
 nnoremap n nzzzv
