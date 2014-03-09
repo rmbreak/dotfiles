@@ -10,6 +10,7 @@ Bundle 'gmarik/vundle'
 
 Bundle 'git@github.com:Lokaltog/powerline.git', {'rtp': 'powerline/bindings/vim/'}
 Bundle 'git@github.com:godlygeek/tabular.git'
+Bundle 'git@github.com:kien/rainbow_parentheses.vim.git'
 Bundle 'git@github.com:scrooloose/nerdtree.git'
 Bundle 'git@github.com:scrooloose/syntastic.git'
 Bundle 'git@github.com:tpope/vim-fugitive.git'
@@ -61,6 +62,16 @@ endfunction
 
 nmap <silent> <f3> :ErrorsToggle<cr>
 nmap <silent> <f4> :QFixToggle<cr>
+" }}}
+" Rainbow Parens --------------------- {{{
+augroup rainbow_parens
+    au!
+    au Syntax * RainbowParenthesesLoadRound " ()
+    au Syntax * RainbowParenthesesLoadSquare " []
+    au Syntax * RainbowParenthesesLoadBraces " {}
+augroup END
+
+noremap <leader>R :RainbowParenthesesToggle<cr>
 " }}}
 
 set notimeout
