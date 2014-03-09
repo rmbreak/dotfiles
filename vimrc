@@ -22,7 +22,7 @@ syntax on
 set encoding=utf-8
 set expandtab
 set list
-set listchars=
+set listchars=tab:▸•
 set number
 set splitright
 set splitbelow
