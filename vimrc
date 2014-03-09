@@ -1,5 +1,6 @@
-set nocompatible
+filetype off
 filetype plugin indent on
+set nocompatible
 set t_Co=256 " Support 256 colors
 
 " Bundles ---------------------------- {{{
@@ -83,7 +84,9 @@ nnoremap <leader>ww mz:%s/\s\+$//<cr>:let @/=''<cr>`z
 set laststatus=2 " Always display the statusline in all windows
 set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
 
-colorscheme jellybean
+colorscheme mustang
+hi Normal ctermbg=NONE
+hi NonText ctermbg=NONE
 
 " Resize splits when window is resized
 au VimResized * :wincmd =
