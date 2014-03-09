@@ -21,7 +21,7 @@ syntax on
 set encoding=utf-8
 set expandtab
 set list
-set listchars=eol:¬
+set listchars=
 set number
 set splitright
 set splitbelow
@@ -33,6 +33,8 @@ set wrap
 " NERDTree --------------------------- {{{
 noremap <F2> :NERDTreeToggle<cr>
 " }}}
+
+au BufWritePost .vimrc source %
 
 augroup trailing
     au!
@@ -74,6 +76,12 @@ noremap j gj
 noremap k gk
 noremap gj j
 noremap gk k
+
+" Easy buffer navigation
+noremap <c-h> <c-w>h
+noremap <c-j> <c-w>j
+noremap <c-k> <c-w>k
+noremap <c-l> <c-w>l
 
 " Keep search matches in the middle of the window and open fold
 nnoremap n nzzzv
