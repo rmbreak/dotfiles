@@ -34,6 +34,33 @@ set wrap
 " NERDTree --------------------------- {{{
 noremap <F2> :NERDTreeToggle<cr>
 " }}}
+" Error Toggles ---------------------- {{{
+command! ErrorsToggle call ErrorsToggle()
+function! ErrorsToggle()
+    if exists("w:is_error_window")
+        unlet w:is_error_window
+        exec "q"
+    else
+        exec "Errors"
+        lopen
+        let w:is_error_window = 1
+    endif
+endfunction
+
+command! -bang -nargs=? QFixToggle call QFixToggle(<bang>0)
+function! QFixToggle(forced)
+    if exists("g:qfix_win") && a:forced == 0
+        cclose
+        unlet g:qfix_win
+    else
+        copen 10
+        let g:qfix_win = bufnr("$")
+    endif
+endfunction
+
+nmap <silent> <f3> :ErrorsToggle<cr>
+nmap <silent> <f4> :QFixToggle<cr>
+" }}}
 
 set notimeout
 set ttimeout
