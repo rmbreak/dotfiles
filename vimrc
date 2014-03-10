@@ -14,6 +14,7 @@ Bundle 'git@github.com:kien/rainbow_parentheses.vim.git'
 Bundle 'git@github.com:scrooloose/nerdtree.git'
 Bundle 'git@github.com:scrooloose/syntastic.git'
 Bundle 'git@github.com:tpope/vim-fugitive.git'
+Bundle 'git@github.com:zeis/vim-kolor.git'
 " }}}
 " Leader ---------------------------- {{{
 let mapleader = ","
@@ -23,8 +24,9 @@ let maplocalleader = "\\"
 syntax on
 set encoding=utf-8
 set expandtab
+set clipboard+=unnamed
 set list
-set listchars=tab:▸•
+set listchars=tab:▸\ 
 set number
 set splitright
 set splitbelow
@@ -66,12 +68,15 @@ nmap <silent> <f4> :QFixToggle<cr>
 " Rainbow Parens --------------------- {{{
 augroup rainbow_parens
     au!
-    au Syntax * RainbowParenthesesLoadRound " ()
-    au Syntax * RainbowParenthesesLoadSquare " []
-    au Syntax * RainbowParenthesesLoadBraces " {}
+    au Syntax * RainbowParenthesesLoadRound
+    au Syntax * RainbowParenthesesLoadSquare
+    au Syntax * RainbowParenthesesLoadBraces
 augroup END
 
 noremap <leader>R :RainbowParenthesesToggle<cr>
+" }}}
+" Syntastic --------------------- {{{
+let g:syntastic_check_on_open=1
 " }}}
 
 set notimeout
@@ -95,10 +100,12 @@ nnoremap <leader>ww mz:%s/\s\+$//<cr>:let @/=''<cr>`z
 set laststatus=2 " Always display the statusline in all windows
 set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
 
-colorscheme mustang
+colorscheme kolor
 
 " Resize splits when window is resized
 au VimResized * :wincmd =
+
+nnoremap <F1> <nop>
 
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>ef :execute ":vsplit " . $HOME . "/.vim/ftplugin/" . &filetype . ".vim"<cr>
