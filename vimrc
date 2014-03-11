@@ -86,6 +86,8 @@ set notimeout
 set ttimeout
 set ttimeoutlen=10
 
+set autoread
+
 augroup reload_vimrc
     au!
     au BufWritePost $MYVIMRC nested source $MYVIMRC
