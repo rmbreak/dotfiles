@@ -10,6 +10,7 @@ Bundle 'gmarik/vundle'
 
 Bundle 'git@github.com:Lokaltog/powerline.git', {'rtp': 'powerline/bindings/vim/'}
 Bundle 'git@github.com:godlygeek/tabular.git'
+Bundle 'git@github.com:kien/ctrlp.vim.git'
 Bundle 'git@github.com:kien/rainbow_parentheses.vim.git'
 Bundle 'git@github.com:scrooloose/nerdtree.git'
 Bundle 'git@github.com:scrooloose/syntastic.git'
