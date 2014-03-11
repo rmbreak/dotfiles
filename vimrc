@@ -12,9 +12,11 @@ Bundle 'git@github.com:Lokaltog/powerline.git', {'rtp': 'powerline/bindings/vim/
 Bundle 'git@github.com:godlygeek/tabular.git'
 Bundle 'git@github.com:kien/ctrlp.vim.git'
 Bundle 'git@github.com:kien/rainbow_parentheses.vim.git'
+Bundle 'git@github.com:mileszs/ack.vim.git'
 Bundle 'git@github.com:scrooloose/nerdtree.git'
 Bundle 'git@github.com:scrooloose/syntastic.git'
 Bundle 'git@github.com:tpope/vim-fugitive.git'
+Bundle 'git@github.com:tpope/vim-surround.git'
 Bundle 'git@github.com:zeis/vim-kolor.git'
 " }}}
 " Leader ---------------------------- {{{
