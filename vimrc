@@ -31,6 +31,8 @@ set expandtab
 set clipboard+=unnamed
 set list
 set listchars=tab:▸\ 
+set cursorline
+set hlsearch
 set number
 set splitright
 set splitbelow
@@ -131,6 +133,8 @@ noremap <c-l> <c-w>l
 
 " Close all but this window
 nnoremap <leader>tw :on<cr>
+
+nnoremap <leader>hs :set hlsearch!<cr>
 
 " Keep search matches in the middle of the window and open fold
 nnoremap n nzzzv
