@@ -6,19 +6,19 @@ set t_Co=256 " Support 256 colors
 " Bundles ---------------------------- {{{
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
-Bundle 'gmarik/vundle'
 
-Bundle 'git@github.com:Lokaltog/powerline.git', {'rtp': 'powerline/bindings/vim/'}
-Bundle 'git@github.com:godlygeek/tabular.git'
-Bundle 'git@github.com:kien/ctrlp.vim.git'
-Bundle 'git@github.com:kien/rainbow_parentheses.vim.git'
-Bundle 'git@github.com:mileszs/ack.vim.git'
-Bundle 'git@github.com:scrooloose/nerdtree.git'
-Bundle 'git@github.com:scrooloose/syntastic.git'
-Bundle 'git@github.com:suan/vim-instant-markdown.git'
-Bundle 'git@github.com:tpope/vim-fugitive.git'
-Bundle 'git@github.com:tpope/vim-surround.git'
-Bundle 'git@github.com:zeis/vim-kolor.git'
+Bundle 'bling/vim-airline'
+Bundle 'gmarik/vundle'
+Bundle 'godlygeek/tabular'
+Bundle 'kien/ctrlp.vim'
+Bundle 'kien/rainbow_parentheses.vim'
+Bundle 'mileszs/ack.vim'
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/syntastic'
+Bundle 'suan/vim-instant-markdown'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-surround'
+Bundle 'zeis/vim-kolor'
 " }}}
 " Leader ---------------------------- {{{
 let mapleader = ","
@@ -83,6 +83,11 @@ noremap <leader>R :RainbowParenthesesToggle<cr>
 " }}}
 " Syntastic --------------------- {{{
 let g:syntastic_check_on_open=1
+" }}}
+" Airline --------------------- {{{
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+let g:airline_theme='bubblegum'
 " }}}
 
 set notimeout
