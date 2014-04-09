@@ -90,16 +90,14 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme='bubblegum'
 " }}}
 
+vnoremap <leader>S y:execute @@<cr>:echo 'Sourced selection.'<cr>
+nnoremap <leader>S ^yg_y:execute @@<cr>:echo 'Sourced line.'<cr>
+
 set notimeout
 set ttimeout
 set ttimeoutlen=10
 
 set autoread
-
-augroup reload_vimrc
-    au!
-    au BufWritePost $MYVIMRC nested source $MYVIMRC
-augroup END
 
 augroup trailing
     au!
