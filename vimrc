@@ -6,9 +6,9 @@ set t_Co=256 " Support 256 colors
 " Bundles ---------------------------- {{{
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
+Bundle 'gmarik/vundle'
 
 Bundle 'bling/vim-airline'
-Bundle 'gmarik/vundle'
 Bundle 'godlygeek/tabular'
 Bundle 'kien/ctrlp.vim'
 Bundle 'kien/rainbow_parentheses.vim'
@@ -44,32 +44,39 @@ set wrap
 " NERDTree --------------------------- {{{
 noremap <F2> :NERDTreeToggle<cr>
 " }}}
-" Error Toggles ---------------------- {{{
-command! ErrorsToggle call ErrorsToggle()
-function! ErrorsToggle()
-    if exists("w:is_error_window")
-        unlet w:is_error_window
-        exec "q"
-    else
-        exec "Errors"
-        lopen
-        let w:is_error_window = 1
-    endif
+" List Toggles ---------------------- {{{
+function! GetBufferList()
+  redir =>buflist
+  silent! ls
+  redir END
+  return buflist
 endfunction
 
-command! -bang -nargs=? QFixToggle call QFixToggle(<bang>0)
-function! QFixToggle(forced)
-    if exists("g:qfix_win") && a:forced == 0
-        cclose
-        unlet g:qfix_win
-    else
-        copen 10
-        let g:qfix_win = bufnr("$")
+function! ToggleList(bufname, pfx)
+  let buflist = GetBufferList()
+  for bufnum in map(filter(split(buflist, '\n'), 'v:val =~ "'.a:bufname.'"'), 'str2nr(matchstr(v:val, "\\d\\+"))')
+    if bufwinnr(bufnum) != -1
+      exec(a:pfx.'close')
+      return
     endif
+  endfor
+  if a:pfx == 'l'
+      exec "Errors"
+      if len(getloclist(0)) == 0
+          echohl ErrorMsg
+          echo "Location List is Empty."
+          return
+      endif
+  endif
+  let winnr = winnr()
+  exec(a:pfx.'open')
+  if winnr() != winnr
+    wincmd p
+  endif
 endfunction
 
-nmap <silent> <f3> :ErrorsToggle<cr>
-nmap <silent> <f4> :QFixToggle<cr>
+nmap <silent> <f3> :call ToggleList("Location List", 'l')<cr>
+nmap <silent> <f4> :call ToggleList("Quickfix List", 'c')<cr>
 " }}}
 " Rainbow Parens --------------------- {{{
 augroup rainbow_parens
@@ -83,6 +90,8 @@ noremap <leader>R :RainbowParenthesesToggle<cr>
 " }}}
 " Syntastic --------------------- {{{
 let g:syntastic_check_on_open=1
+let g:syntastic_error_symbol = '✗'
+let g:syntastic_warning_symbol = '!'
 " }}}
 " Airline --------------------- {{{
 let g:airline#extensions#tabline#enabled = 1
