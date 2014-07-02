@@ -38,8 +38,8 @@ set number
 set splitright
 set splitbelow
 set smartindent
-set ts=4
-set sw=4
+set softtabstop=4
+set shiftwidth=4
 set wrap
 " }}}
 " NERDTree --------------------------- {{{
