@@ -3,12 +3,13 @@ filetype plugin indent on
 set nocompatible
 set t_Co=256 " Support 256 colors
 
-" Bundles ---------------------------- {{{
+" Plugins ---------------------------- {{{
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Plugin 'gmarik/vundle'
 
 Plugin 'bling/vim-airline'
+Plugin 'chriskempson/base16-vim'
 Plugin 'godlygeek/tabular'
 Plugin 'kien/ctrlp.vim'
 Plugin 'kien/rainbow_parentheses.vim'
@@ -19,7 +20,6 @@ Plugin 'scrooloose/syntastic'
 Plugin 'suan/vim-instant-markdown'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
-Plugin 'zeis/vim-kolor'
 " }}}
 " Leader ---------------------------- {{{
 let mapleader = ","
@@ -121,7 +121,9 @@ nnoremap <leader>ww mz:%s/\s\+$//<cr>:let @/=''<cr>`z
 set laststatus=2 " Always display the statusline in all windows
 set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
 
-colorscheme kolor
+set background=dark
+let base16colorspace=256
+colorscheme base16-default
 
 " Resize splits when window is resized
 au VimResized * :wincmd =
