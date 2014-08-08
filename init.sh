@@ -40,4 +40,7 @@ backup_and_link 'tmux.conf'
 # vim
 backup_and_link 'vim'
 backup_and_link 'vimrc'
-vim +PluginInstall +qall
+
+vimrc_plugins=$(mktemp)
+sed -n '/set nocompatible/,/call vundle#end/p' vimrc > $vimrc_plugins
+vim -u $vimrc_plugins +PluginInstall +qall

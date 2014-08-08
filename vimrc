@@ -124,7 +124,7 @@ set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusl
 
 set background=dark
 let base16colorspace=256
-silent! colorscheme base16-default
+colorscheme base16-default
 
 " Resize splits when window is resized
 au VimResized * :wincmd =
