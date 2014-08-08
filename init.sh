@@ -16,6 +16,8 @@ backup_and_link () {
   ln -s $(pwd)/$1 $HOME/.$1
 }
 
+git submodule update --init
+
 # ZSH
 git clone git://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh
 for file in zsh/*; do
