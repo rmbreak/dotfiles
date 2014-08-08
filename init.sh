@@ -7,6 +7,9 @@ backup_and_link () {
   fi
 
   if [ -e "$HOME/.$1" ]; then
+    if [ -L "$HOME/.$1.bak" ] && [ -d "$HOME/.$1.bak" ]; then
+      rm "$HOME/.$1.bak"
+    fi
     echo "Moving $HOME/.$1 to $HOME/.$1.bak"
     mv "$HOME/.$1" "$HOME/.$1.bak"
   fi
@@ -14,16 +17,14 @@ backup_and_link () {
 }
 
 # ZSH
-backup_and_link 'zsh'
-if [ -f "$HOME/.zshrc" ]; then
-  echo -e '\n' >> $HOME/.zshrc
-  echo '# Source other ZSH files' >> $HOME/.zshrc
-  echo 'for file in ~/.zsh/*.sh; do' >> $HOME/.zshrc
-  echo '  if [ -f "$file" ]; then' >> $HOME/.zshrc
-  echo '    source "$file"' >> $HOME/.zshrc
-  echo '  fi' >> $HOME/.zshrc
-  echo 'done' >> $HOME/.zshrc
-fi
+git clone git://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh
+for file in zsh/*; do
+  if [ -f "$file" ]; then
+    ln -s $(pwd)/zsh/$(basename $file) "$HOME/.oh-my-zsh/custom/$(basename $file)"
+  fi
+done
+
+backup_and_link 'zshrc'
 
 # Xresources
 backup_and_link 'Xresources'
