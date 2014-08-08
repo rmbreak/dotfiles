@@ -1,11 +1,10 @@
-filetype off
-filetype plugin indent on
 set nocompatible
+filetype off
 set t_Co=256 " Support 256 colors
 
 " Plugins ---------------------------- {{{
 set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+call vundle#begin()
 Plugin 'gmarik/vundle'
 
 Plugin 'bling/vim-airline'
@@ -20,6 +19,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'suan/vim-instant-markdown'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
+call vundle#end()
 " }}}
 " Leader ---------------------------- {{{
 let mapleader = ","
@@ -100,6 +100,7 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme='bubblegum'
 " }}}
 
+filetype plugin indent on
 vnoremap <leader>S y:execute @@<cr>:echo 'Sourced selection.'<cr>
 nnoremap <leader>S ^yg_y:execute @@<cr>:echo 'Sourced line.'<cr>
 
@@ -123,7 +124,7 @@ set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusl
 
 set background=dark
 let base16colorspace=256
-colorscheme base16-default
+silent! colorscheme base16-default
 
 " Resize splits when window is resized
 au VimResized * :wincmd =

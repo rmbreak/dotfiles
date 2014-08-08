@@ -21,7 +21,7 @@ git submodule update --init
 # ZSH
 git clone git://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh
 for file in zsh/*; do
-  if [ -f "$file" ]; then
+  if [ -f "$file" ] && [ ! -f "$HOME/.oh-my-zsh/custom/$(basename $file)" ]; then
     ln -s $(pwd)/zsh/$(basename $file) "$HOME/.oh-my-zsh/custom/$(basename $file)"
   fi
 done
