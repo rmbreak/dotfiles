@@ -111,8 +111,8 @@ set autoread
 
 augroup trailing
     au!
-    au InsertEnter * :set listchars-=trail:⌴
-    au InsertLeave * :set listchars+=trail:⌴
+    au InsertEnter * :set listchars-=trail:¬
+    au InsertLeave * :set listchars+=trail:¬
 augroup END
 
 " Clean trailing whitespace
