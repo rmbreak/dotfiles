@@ -44,3 +44,8 @@ backup_and_link 'vimrc'
 vimrc_plugins=$(mktemp)
 sed -n '/set nocompatible/,/call vundle#end/p' vimrc > $vimrc_plugins
 vim -u $vimrc_plugins +PluginInstall +qall
+
+# fonts
+mkdir -p "$HOME/.fonts"
+cp "./fonts/Droid Sans Mono for Powerline.otf" "$HOME/.fonts/"
+fc-cache -f -v
