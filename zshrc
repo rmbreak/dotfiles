@@ -58,7 +58,3 @@ bindkey -v
 alias o=xdg-open
 alias tmux="tmux -2"
 alias itt='img2txt'
-
-if hash xrdb 2>/dev/null; then
-    xrdb "$HOME/.Xresources"
-fi

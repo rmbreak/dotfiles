@@ -19,7 +19,10 @@ backup_and_link () {
 git submodule update --init
 
 # ZSH
-git clone git://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+  git clone git://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh
+fi
+
 for file in zsh/*; do
   if [ -f "$file" ] && [ ! -f "$HOME/.oh-my-zsh/custom/$(basename $file)" ]; then
     ln -s $(pwd)/zsh/$(basename $file) "$HOME/.oh-my-zsh/custom/$(basename $file)"
@@ -28,7 +31,8 @@ done
 
 backup_and_link 'zshrc'
 
-# Xresources
+# X11
+backup_and_link 'xprofile'
 backup_and_link 'Xresources'
 
 # gitconfig
