@@ -103,6 +103,9 @@ let g:airline_theme='bubblegum'
 " JSON ------------------------ {{{
 let g:vim_json_syntax_conceal = 0
 " }}}
+" Pymode  ------------------------ {{{
+let g:pymode_indent = 1
+" }}}
 
 filetype plugin indent on
 vnoremap <leader>S y:execute @@<cr>:echo 'Sourced selection.'<cr>
