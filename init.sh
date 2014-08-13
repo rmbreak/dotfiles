@@ -50,6 +50,7 @@ backup_and_link 'vimrc'
 vimrc_plugins=$(mktemp)
 sed -n '/set nocompatible/,/call vundle#end/p' vimrc > $vimrc_plugins
 vim -u $vimrc_plugins +PluginInstall +qall
+rm $vimrc_plugins
 
 # fonts
 mkdir -p "$HOME/.fonts"
