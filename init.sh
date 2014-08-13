@@ -16,6 +16,8 @@ backup_and_link () {
   ln -s $(pwd)/$1 $HOME/.$1
 }
 
+sudo ./scripts/install_packages.py
+
 git submodule update --init
 
 # ZSH
