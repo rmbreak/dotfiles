@@ -9,6 +9,7 @@ Plugin 'gmarik/vundle'
 
 Plugin 'bling/vim-airline'
 Plugin 'chriskempson/base16-vim'
+Plugin 'elzr/vim-json'
 Plugin 'godlygeek/tabular'
 Plugin 'kien/ctrlp.vim'
 Plugin 'kien/rainbow_parentheses.vim'
@@ -98,6 +99,9 @@ let g:syntastic_warning_symbol = '!'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme='bubblegum'
+" }}}
+" JSON ------------------------ {{{
+let g:vim_json_syntax_conceal = 0
 " }}}
 
 filetype plugin indent on
