@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 backup_and_link () {
   if [ -z "$1" ]; then
@@ -17,7 +17,8 @@ backup_and_link () {
   ln -s $(pwd)/$1 $HOME/.$1
 }
 
-#sudo ./scripts/install_packages.py
+read -p "Install packages to system (y/N)? "
+[[ "$REPLY" = [yY] ]] && sudo ./scripts/install_packages.py
 
 git submodule update --init
 

@@ -41,6 +41,7 @@
         "ltrace",
         "m4",
         "make",
+        "mercurial",
         "mlocate",
         "ncurses",
         "networkmanager-openvpn",
