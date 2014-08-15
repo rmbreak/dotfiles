@@ -6,17 +6,18 @@ backup_and_link () {
     exit 1
   fi
 
+  if [ -L "$HOME/.$1" ]; then
+    rm "$HOME/.$1"
+  fi
+
   if [ -e "$HOME/.$1" ]; then
-    if [ -L "$HOME/.$1.bak" ] && [ -d "$HOME/.$1.bak" ]; then
-      rm "$HOME/.$1.bak"
-    fi
     echo "Moving $HOME/.$1 to $HOME/.$1.bak"
     mv "$HOME/.$1" "$HOME/.$1.bak"
   fi
   ln -s $(pwd)/$1 $HOME/.$1
 }
 
-sudo ./scripts/install_packages.py
+#sudo ./scripts/install_packages.py
 
 git submodule update --init
 
@@ -26,6 +27,12 @@ if [ ! -d "$HOME/.oh-my-zsh" ]; then
 fi
 
 for file in zsh/*; do
+  [ -e "$file" ] || continue
+
+  if [ -L "$HOME/.oh-my-zsh/custom/$(basename $file)" ]; then
+    rm "$HOME/.oh-my-zsh/custom/$(basename $file)"
+  fi
+
   if [ -f "$file" ] && [ ! -f "$HOME/.oh-my-zsh/custom/$(basename $file)" ]; then
     ln -s $(pwd)/zsh/$(basename $file) "$HOME/.oh-my-zsh/custom/$(basename $file)"
   fi
