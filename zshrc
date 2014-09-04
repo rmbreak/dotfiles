@@ -50,7 +50,7 @@ ZSH_THEME="pygmalion-custom"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git gpg-agent jsontools pip web-search)
 
-source $ZSH/oh-my-zsh.sh
+source "$ZSH/oh-my-zsh.sh"
 
 ### User configuration
 bindkey -v
