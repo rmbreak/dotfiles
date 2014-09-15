@@ -11,6 +11,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'chriskempson/base16-vim'
 Plug 'wting/rust.vim'
 Plug 'elzr/vim-json'
+Plug 'Shougo/vimproc.vim', { 'do': 'make -f make_unix.mak' }
 Plug 'Shougo/neocomplcache.vim'
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
