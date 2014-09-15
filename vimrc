@@ -11,6 +11,9 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'chriskempson/base16-vim'
 Plug 'wting/rust.vim'
 Plug 'elzr/vim-json'
+Plug 'Shougo/neocomplcache.vim'
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
 Plug 'kien/ctrlp.vim'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'klen/python-mode', { 'for': 'python' }
@@ -24,6 +27,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-commentary'
+Plug 'majutsushi/tagbar'
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 call plug#end()
@@ -112,6 +116,10 @@ let g:vim_json_syntax_conceal = 0
 " Pymode  ------------------------ {{{
 let g:pymode_indent = 1
 let g:pymode_rope = 0
+" }}}
+" Neocomplcache  ------------------------ {{{
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_disable_auto_complete = 1
 " }}}
 
 filetype plugin indent on

@@ -13,6 +13,8 @@
         "bzr",
         "cloc",
         "cmake",
+        "cscope",
+        "ctags",
         "curl",
         "dia",
         "dnsutils",
