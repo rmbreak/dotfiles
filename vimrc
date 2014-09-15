@@ -3,24 +3,21 @@ filetype off
 set t_Co=256 " Support 256 colors
 
 " Plugins ---------------------------- {{{
-set rtp+=~/.vim/bundle/vundle/
-call vundle#begin()
-Plugin 'gmarik/vundle'
-
-Plugin 'bling/vim-airline'
-Plugin 'chriskempson/base16-vim'
-Plugin 'elzr/vim-json'
-Plugin 'godlygeek/tabular'
-Plugin 'kien/ctrlp.vim'
-Plugin 'kien/rainbow_parentheses.vim'
-Plugin 'klen/python-mode'
-Plugin 'mileszs/ack.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
-Plugin 'suan/vim-instant-markdown'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
-call vundle#end()
+call plug#begin('~/.vim/plugged')
+Plug 'bling/vim-airline'
+Plug 'chriskempson/base16-vim'
+Plug 'elzr/vim-json'
+Plug 'godlygeek/tabular'
+Plug 'kien/ctrlp.vim'
+Plug 'kien/rainbow_parentheses.vim'
+Plug 'klen/python-mode'
+Plug 'mileszs/ack.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
+Plug 'suan/vim-instant-markdown'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+call plug#end()
 " }}}
 " Leader ---------------------------- {{{
 let mapleader = ","

@@ -56,8 +56,9 @@ backup_and_link 'vim'
 backup_and_link 'vimrc'
 
 vimrc_plugins=$(mktemp)
-sed -n '/set nocompatible/,/call vundle#end/p' vimrc > "$vimrc_plugins"
-vim -u "$vimrc_plugins" +PluginInstall +qall
+sed -n '/set nocompatible/,/call plug#end/p' vimrc > "$vimrc_plugins"
+vim -u "$vimrc_plugins" +PlugUpgrade +qall # update plug.vim
+vim -u "$vimrc_plugins" +PlugInstall +qall # install plugs
 rm "$vimrc_plugins"
 
 # fonts
