@@ -59,6 +59,8 @@
         "pkg-config",
         "pv",
         "pwgen",
+        "python-jedi",
+        "python2-jedi",
         "qemu",
         "ruby",
         "rxvt-unicode",

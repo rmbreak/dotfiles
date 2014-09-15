@@ -6,6 +6,7 @@ set t_Co=256 " Support 256 colors
 call plug#begin('~/.vim/plugged')
 Plug 'bling/vim-airline'
 Plug 'godlygeek/tabular'
+Plug 'reedes/vim-thematic'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'chriskempson/base16-vim'
 Plug 'wting/rust.vim'
@@ -13,6 +14,7 @@ Plug 'elzr/vim-json'
 Plug 'kien/ctrlp.vim'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'klen/python-mode', { 'for': 'python' }
+Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'mileszs/ack.vim', { 'on': 'Ack' }
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/syntastic'
@@ -109,6 +111,7 @@ let g:vim_json_syntax_conceal = 0
 " }}}
 " Pymode  ------------------------ {{{
 let g:pymode_indent = 1
+let g:pymode_rope = 0
 " }}}
 
 filetype plugin indent on
