@@ -122,6 +122,9 @@ let g:pymode_rope = 0
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_disable_auto_complete = 1
 " }}}
+" Tagbar  ------------------------ {{{
+nmap <silent> <f5> :TagbarToggle<cr>
+" }}}
 
 filetype plugin indent on
 vnoremap <leader>S y:execute @@<cr>:echo 'Sourced selection.'<cr>
