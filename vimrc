@@ -5,18 +5,25 @@ set t_Co=256 " Support 256 colors
 " Plugins ---------------------------- {{{
 call plug#begin('~/.vim/plugged')
 Plug 'bling/vim-airline'
-Plug 'chriskempson/base16-vim'
-Plug 'elzr/vim-json'
 Plug 'godlygeek/tabular'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'chriskempson/base16-vim'
+Plug 'wting/rust.vim'
+Plug 'elzr/vim-json'
 Plug 'kien/ctrlp.vim'
 Plug 'kien/rainbow_parentheses.vim'
-Plug 'klen/python-mode'
-Plug 'mileszs/ack.vim'
-Plug 'scrooloose/nerdtree'
+Plug 'klen/python-mode', { 'for': 'python' }
+Plug 'mileszs/ack.vim', { 'on': 'Ack' }
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/syntastic'
 Plug 'suan/vim-instant-markdown'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-commentary'
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 call plug#end()
 " }}}
 " Leader ---------------------------- {{{
