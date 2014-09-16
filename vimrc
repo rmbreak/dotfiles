@@ -11,12 +11,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'chriskempson/base16-vim'
 Plug 'wting/rust.vim'
 Plug 'elzr/vim-json'
-Plug 'davidhalter/jedi-vim', { 'for': 'python' }
-Plug 'Shougo/vimproc.vim', { 'do': 'make -f make_unix.mak' }
-Plug 'Shougo/neocomplcache.vim'
-Plug 'Shougo/neocomplcache-clang'
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer --omnisharp-completer' }
 Plug 'fatih/vim-go'
 Plug 'kien/ctrlp.vim'
 Plug 'kien/rainbow_parentheses.vim'
@@ -120,20 +115,10 @@ let g:vim_json_syntax_conceal = 0
 let g:pymode_indent = 1
 let g:pymode_rope = 0
 " }}}
-" Neocomplcache  ------------------------ {{{
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_clang_use_library = 1
-
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-xmap <C-k> <Plug>(neosnippet_expand_target)
-" }}}
 " Tagbar  ------------------------ {{{
 nmap <silent> <f5> :TagbarToggle<cr>
 " }}}
-" Jedi  ------------------------ {{{
-let g:jedi#popup_select_first = 0
-let g:jedi#auto_initialization = 1
+" YouCompleteMe  ------------------------ {{{
 " }}}
 
 filetype plugin indent on
