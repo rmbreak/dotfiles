@@ -45,8 +45,10 @@ set list
 set listchars=tab:▸\ 
 set cursorline
 set hlsearch
+set wildmenu
 set number
 set splitright
+set foldlevelstart=99
 set splitbelow
 set smartindent
 set softtabstop=4
@@ -125,13 +127,15 @@ let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd
 " }}}
 " Ultisnips  ------------------------ {{{
 let g:UltiSnipsExpandTrigger = "<c-k>"
-let g:UltiSnipsJumpForwardTrigger = "<c-b>"
+let g:UltiSnipsJumpForwardTrigger = "<c-k>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-z>"
 " }}}
 
 filetype plugin indent on
 vnoremap <leader>S y:execute @@<cr>:echo 'Sourced selection.'<cr>
 nnoremap <leader>S ^yg_y:execute @@<cr>:echo 'Sourced line.'<cr>
+
+cnoremap w!! w !sudo tee > /dev/null %
 
 set notimeout
 set ttimeout
