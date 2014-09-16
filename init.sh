@@ -18,7 +18,17 @@ backup_and_link () {
 }
 
 read -p "Install packages to system (y/N)? "
-[[ "$REPLY" = [yY] ]] && sudo ./scripts/install_packages.py
+if [[ "$REPLY" = [yY] ]]; then
+   sudo ./scripts/install_packages.py
+
+   mkdir pacaur
+   wget -P pacaur "https://aur.archlinux.org/packages/pa/pacaur/PKGBUILD"
+   cd pacaur && makepkg --noconfirm --install --clean && cd ..
+   rm -rf ./pacaur
+
+   # for YCM vim plugin
+   pacaur --noconfirm --noedit -S libtinfo
+fi
 
 git submodule update --init
 
