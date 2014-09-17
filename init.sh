@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+
 backup_and_link () {
   if [ -z "$1" ]; then
     error "Function parameter missing"
@@ -50,18 +51,10 @@ for file in zsh/*; do
 done
 
 backup_and_link 'zshrc'
-
-# X11
 backup_and_link 'xprofile'
 backup_and_link 'Xresources'
-
-# gitconfig
 backup_and_link 'gitconfig'
-
-# tmux.conf
 backup_and_link 'tmux.conf'
-
-# vim
 backup_and_link 'vim'
 backup_and_link 'vimrc'
 
