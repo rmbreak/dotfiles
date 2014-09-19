@@ -58,6 +58,8 @@ backup_and_link 'tmux.conf'
 backup_and_link 'vim'
 backup_and_link 'vimrc'
 
+mkdir -p "vim/autoload"
+curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" -o "./vim/autoload/plug.vim"
 vimrc_plugins=$(mktemp)
 sed -n '/set nocompatible/,/call plug#end/p' vimrc > "$vimrc_plugins"
 vim -u "$vimrc_plugins" +PlugUpgrade +qall # update plug.vim
