@@ -30,6 +30,10 @@ Plug 'honza/vim-snippets'
 Plug 'majutsushi/tagbar'
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-notes'
+Plug 'xolox/vim-session'
 call plug#end()
 " }}}
 " Leader ---------------------------- {{{
@@ -52,6 +56,7 @@ set foldlevelstart=99
 set splitbelow
 set smartindent
 set softtabstop=4
+set tabstop=4
 set shiftwidth=4
 set wrap
 " }}}
@@ -129,6 +134,13 @@ let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd
 let g:UltiSnipsExpandTrigger = "<c-k>"
 let g:UltiSnipsJumpForwardTrigger = "<c-k>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-z>"
+" }}}
+" Notes  ------------------------ {{{
+let g:notes_directories = ['~/notes']
+" }}}
+" Notes  ------------------------ {{{
+let g:session_autosave = 'no'
+let g:session_autoload = 'no'
 " }}}
 
 filetype plugin indent on
