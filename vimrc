@@ -50,6 +50,8 @@ set listchars=tab:▸\
 set cursorline
 set hlsearch
 set wildmenu
+set ignorecase
+set smartcase
 set number
 set splitright
 set foldlevelstart=99
@@ -138,7 +140,7 @@ let g:UltiSnipsJumpBackwardTrigger = "<c-z>"
 " Notes  ------------------------ {{{
 let g:notes_directories = ['~/notes']
 " }}}
-" Notes  ------------------------ {{{
+" Session  ------------------------ {{{
 let g:session_autosave = 'no'
 let g:session_autoload = 'no'
 " }}}
