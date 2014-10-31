@@ -11,7 +11,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'chriskempson/base16-vim'
 Plug 'wting/rust.vim'
 Plug 'elzr/vim-json'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer --omnisharp-completer' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer' }
 Plug 'fatih/vim-go'
 Plug 'kien/ctrlp.vim'
 Plug 'kien/rainbow_parentheses.vim'
