@@ -130,7 +130,7 @@ let g:pymode_rope = 0
 nmap <silent> <f5> :TagbarToggle<cr>
 " }}}
 " YouCompleteMe  ------------------------ {{{
-let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 " }}}
 " Ultisnips  ------------------------ {{{
 let g:UltiSnipsExpandTrigger = "<c-k>"
