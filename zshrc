@@ -58,3 +58,6 @@ bindkey -v
 alias o=xdg-open
 alias tmux="tmux -2"
 alias itt='img2txt'
+
+alias grep="grep $GREP_OPTIONS"
+unset GREP_OPTIONS
