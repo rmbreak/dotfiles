@@ -57,6 +57,7 @@ set splitright
 set foldlevelstart=99
 set splitbelow
 set smartindent
+set cinoptions=g0
 set softtabstop=4
 set tabstop=4
 set shiftwidth=4
