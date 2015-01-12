@@ -61,3 +61,5 @@ alias itt='img2txt'
 
 alias grep="grep $GREP_OPTIONS"
 unset GREP_OPTIONS
+
+alias svim='sudo vim'
