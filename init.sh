@@ -53,6 +53,7 @@ done
 backup_and_link 'zshrc'
 backup_and_link 'xprofile'
 backup_and_link 'Xresources'
+backup_and_link 'inputrc'
 backup_and_link 'gitconfig'
 backup_and_link 'tmux.conf'
 backup_and_link 'vim'
