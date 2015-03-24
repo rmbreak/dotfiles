@@ -30,10 +30,6 @@ Plug 'honza/vim-snippets'
 Plug 'majutsushi/tagbar'
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-notes'
-Plug 'xolox/vim-session'
 call plug#end()
 " }}}
 " Leader ---------------------------- {{{
@@ -137,13 +133,6 @@ let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 let g:UltiSnipsExpandTrigger = "<c-k>"
 let g:UltiSnipsJumpForwardTrigger = "<c-k>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-z>"
-" }}}
-" Notes  ------------------------ {{{
-let g:notes_directories = ['~/notes']
-" }}}
-" Session  ------------------------ {{{
-let g:session_autosave = 'no'
-let g:session_autoload = 'no'
 " }}}
 
 filetype plugin indent on
