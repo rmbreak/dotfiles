@@ -48,8 +48,7 @@ ZSH_THEME="pygmalion-custom"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git gpg-agent jsontools pip web-search)
-
+plugins=(git gpg-agent jsontools pip web-search zsh-syntax-highlighting)
 source "$ZSH/oh-my-zsh.sh"
 
 ### User configuration
@@ -63,3 +62,10 @@ alias grep="grep --color=always $GREP_OPTIONS"
 unset GREP_OPTIONS
 
 alias svim='sudo vim'
+
+function help() {
+    bash -c "help $1"
+}
+
+unalias run-help
+autoload run-help
