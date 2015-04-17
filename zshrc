@@ -73,3 +73,5 @@ function help() {
 
 unalias run-help
 autoload run-help
+
+export EDITOR='vim'
