@@ -37,6 +37,11 @@ if [ ! -d "$HOME/.oh-my-zsh" ]; then
   git clone git://github.com/robbyrussell/oh-my-zsh.git "$HOME/.oh-my-zsh"
 fi
 
+(
+cd "$HOME/.oh-my-zsh/custom/plugins" &&
+  git clone --depth 1 git@github.com:zsh-users/zsh-syntax-highlighting.git
+)
+
 for file in zsh/*; do
   [[ -e "$file" ]] || continue
 
