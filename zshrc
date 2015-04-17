@@ -54,7 +54,11 @@ source "$ZSH/oh-my-zsh.sh"
 ### User configuration
 bindkey -v
 
-alias o=xdg-open
+if hash xdg-open 2>/dev/null; then
+    alias o=xdg-open
+    alias open=xdg-open
+fi
+
 alias tmux="tmux -2"
 alias itt='img2txt'
 
