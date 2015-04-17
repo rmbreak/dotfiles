@@ -1,17 +1,16 @@
 #!/usr/bin/env bash
 
-
 backup_and_link () {
-  if [ -z "$1" ]; then
-    error "Function parameter missing"
+  if [[ -z "$1" ]]; then
+    echo "Function parameter missing" >&2
     exit 1
   fi
 
-  if [ -L "$HOME/.$1" ]; then
+  if [[ -L "$HOME/.$1" ]]; then
     rm "$HOME/.$1"
   fi
 
-  if [ -e "$HOME/.$1" ]; then
+  if [[ -e "$HOME/.$1" ]]; then
     echo "Moving $HOME/.$1 to $HOME/.$1.bak"
     mv "$HOME/.$1" "$HOME/.$1.bak"
   fi
@@ -39,13 +38,13 @@ if [ ! -d "$HOME/.oh-my-zsh" ]; then
 fi
 
 for file in zsh/*; do
-  [ -e "$file" ] || continue
+  [[ -e "$file" ]] || continue
 
-  if [ -L "$HOME/.oh-my-zsh/custom/$(basename "$file")" ]; then
+  if [[ -L "$HOME/.oh-my-zsh/custom/$(basename "$file")" ]]; then
     rm "$HOME/.oh-my-zsh/custom/$(basename "$file")"
   fi
 
-  if [ -f "$file" ] && [ ! -f "$HOME/.oh-my-zsh/custom/$(basename "$file")" ]; then
+  if [[ -f "$file" && ! -f "$HOME/.oh-my-zsh/custom/$(basename "$file")" ]]; then
     ln -s "$(pwd)/zsh/$(basename "$file")" "$HOME/.oh-my-zsh/custom/$(basename "$file")"
   fi
 done
@@ -61,13 +60,11 @@ backup_and_link 'vimrc'
 
 mkdir -p "vim/autoload"
 curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" -o "./vim/autoload/plug.vim"
-vimrc_plugins=$(mktemp)
-sed -n '/set nocompatible/,/call plug#end/p' vimrc > "$vimrc_plugins"
-vim -u "$vimrc_plugins" +PlugUpgrade +qall # update plug.vim
-vim -u "$vimrc_plugins" +PlugInstall +qall # install plugs
-rm "$vimrc_plugins"
+vimrc_plugins=$(sed -n '/set nocompatible/,/call plug#end/p' vimrc)
+vim -u <(echo -n "$vimrc_plugins") +PlugUpgrade +qall # update plug.vim
+vim -u <(echo -n "$vimrc_plugins") +PlugInstall +qall # install plugs
 
 # fonts
 mkdir -p "$HOME/.fonts"
-cp "./fonts/Droid Sans Mono for Powerline.otf" "$HOME/.fonts/"
+cp .fonts/*.otf "$HOME/.fonts/"
 fc-cache -f -v
