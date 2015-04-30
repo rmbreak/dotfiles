@@ -71,5 +71,5 @@ vim -u <(echo -n "$vimrc_plugins") +PlugInstall +qall # install plugs
 
 # fonts
 mkdir -p "$HOME/.fonts"
-cp .fonts/*.otf "$HOME/.fonts/"
+cp fonts/*.otf "$HOME/.fonts/"
 fc-cache -f -v
