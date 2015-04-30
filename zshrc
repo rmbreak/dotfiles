@@ -55,8 +55,13 @@ source "$ZSH/oh-my-zsh.sh"
 bindkey -v
 
 if hash xdg-open 2>/dev/null; then
-    alias o=xdg-open
-    alias open=xdg-open
+    function o open () {
+        if [[ -d "$1" ]] && hash nautilus 2>/dev/null; then
+            nautilus "$1"
+        else
+            xdg-open "$1"
+        fi
+    }
 fi
 
 alias tmux="tmux -2"
