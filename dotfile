@@ -54,7 +54,7 @@ function install_vim() {
 }
 
 function install_zsh() {
-    echo "to implement"
+    stow zsh
 }
 ########## end installers ###########
 
