@@ -50,7 +50,7 @@ function install_tmux() {
 }
 
 function install_vim() {
-    echo "to implement"
+    stow vim
 }
 
 function install_zsh() {
