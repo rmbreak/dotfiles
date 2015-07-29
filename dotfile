@@ -10,6 +10,7 @@ declare -A MODULES=(
   ["zsh"]="install_zsh"
   ["xdg"]="install_xdg"
   ["roxterm"]="install_roxterm"
+  ["base16"]="install_base16"
 )
 
 function usage() {
@@ -69,6 +70,10 @@ function install_xdg() {
 
 function install_roxterm() {
   stow roxterm
+}
+
+function install_base16() {
+  stow base16
 }
 ########## end installers ###########
 
