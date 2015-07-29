@@ -48,6 +48,7 @@ set hlsearch
 set wildmenu
 set ignorecase
 set smartcase
+set shortmess+=I
 set number
 set splitright
 set foldlevelstart=99
@@ -162,6 +163,7 @@ set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusl
 set background=dark
 let base16colorspace=256
 colorscheme base16-default
+hi Normal ctermbg=none
 
 " Resize splits when window is resized
 au VimResized * :wincmd =
