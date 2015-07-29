@@ -2,102 +2,110 @@
 
 
 declare -A MODULES=(
-    ["fonts"]="install_fonts"
-    ["git"]="install_git"
-    ["bash"]="install_bash"
-    ["tmux"]="install_tmux"
-    ["vim"]="install_vim"
-    ["zsh"]="install_zsh"
+  ["fonts"]="install_fonts"
+  ["git"]="install_git"
+  ["bash"]="install_bash"
+  ["tmux"]="install_tmux"
+  ["vim"]="install_vim"
+  ["zsh"]="install_zsh"
+  ["xdg"]="install_xdg"
 )
 
 function usage() {
-    echo "Usage: ${0##*/} command"
-    echo ""
-    echo "  -h| --help                  Show this help message"
-    echo ""
-    echo "Commands:"
-    echo "  list                        List installable modules"
-    echo "  install (<module>|all)      Install a specific module or all modules"
+  echo "Usage: ${0##*/} command"
+  echo ""
+  echo "  -h| --help                  Show this help message"
+  echo ""
+  echo "Commands:"
+  echo "  list                        List installable modules"
+  echo "  install (<module>|all)      Install a specific module or all modules"
 }
 
 function error_usage() {
-    usage
-    exit 1
+  usage
+  exit 1
 }
 
 function list_modules() {
-    echo "Available modules:"
-    for module in "${!MODULES[@]}"; do
-        echo "  $module"
-    done
+  echo "Available modules:"
+  for module in "${!MODULES[@]}"; do
+    echo "  $module"
+  done
 }
 
 ########## install methods ##########
 function install_fonts() {
-    stow fonts
+  stow fonts
 }
 
 function install_git() {
-    stow git
+  stow git
 }
 
 function install_bash() {
-    stow bash
+  stow bash
 }
 
 function install_tmux() {
-    stow tmux
+  stow tmux
 }
 
 function install_vim() {
-    stow vim
+  stow vim
 }
 
 function install_zsh() {
-    stow zsh
+  [[ -e "$HOME/.zshrc" ]] && rm -f "$HOME/.zshrc"
+  stow zsh
+}
+
+function install_xdg() {
+  [[ -e "$HOME/.config/user-dirs.dirs" ]] && rm -f "$HOME/.config/user-dirs.dirs"
+
+  stow xdg
 }
 ########## end installers ###########
 
 function install() {
-    hash stow 2>/dev/null || { echo "stow command required but not found. Exiting."; exit 1; }
+  hash stow 2>/dev/null || { echo "stow command required but not found. Exiting."; exit 1; }
 
-    if [[ "$1" == "all" ]]; then
-        for module_install in "${MODULES[@]}"; do
-            "$module_install"
-        done
-    else
-        "${MODULES[$1]}"
-    fi
+  if [[ "$1" == "all" ]]; then
+    for module_install in "${MODULES[@]}"; do
+      "$module_install"
+    done
+  else
+    "${MODULES[$1]}"
+  fi
 }
 
 function parse_args() {
-    if [[ $# == 0 ]]; then
+  if [[ $# == 0 ]]; then
+    usage
+    exit 0
+  fi
+
+  while [[ $# > 0 ]]; do
+    case "$1" in
+      -h|--help)
         usage
         exit 0
-    fi
-
-    while [[ $# > 0 ]]; do
-        case "$1" in
-            -h|--help)
-                usage
-                exit 0
-                ;;
-            list)
-                list_modules
-                exit 0
-                ;;
-            install)
-                shift
-                [[ -z "$1" ]] && error_usage
-                [[ "$1" == "all" || ${MODULES["$1"]} ]] || { list_modules; exit 1; }
-                install "$1"
-                ;;
-            *)
-                error_usage
-                ;;
-        esac
+        ;;
+      list)
+        list_modules
+        exit 0
+        ;;
+      install)
         shift
-    done
+        [[ -z "$1" ]] && error_usage
+        [[ "$1" == "all" || ${MODULES["$1"]} ]] || { list_modules; exit 1; }
+        install "$1"
+        ;;
+      *)
+        error_usage
+        ;;
+    esac
+    shift
+  done
 }
 
 cd "${0%/*}/" # change to directory containing this script

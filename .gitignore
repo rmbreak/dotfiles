@@ -3,3 +3,4 @@
 .ropeproject/
 vim/**/.netrwhist
 vim/**/plugged/
+zsh/**/cache/
