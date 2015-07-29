@@ -4,5 +4,5 @@ if [ -f /etc/bashrc ]; then
 fi
 
 # User defined functions and aliases
-export LESS='-i'
+export LESS='-iFRX'
 alias la='ls -al'
