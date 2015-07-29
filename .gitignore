@@ -1,4 +1,6 @@
+*.pyc
 *.swp
 .ropeproject/
-vim/autoload
-*.pyc
+vim/**/.netrwhist
+vim/**/plugged/
+zsh/**/cache/
