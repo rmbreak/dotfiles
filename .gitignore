@@ -2,3 +2,5 @@
 .ropeproject/
 vim/autoload
 *.pyc
+vim/**/.netrwhist
+vim/**/plugged/

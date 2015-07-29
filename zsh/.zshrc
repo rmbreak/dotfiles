@@ -52,6 +52,7 @@ plugins=(git gpg-agent jsontools pip web-search zsh-syntax-highlighting)
 source "$ZSH/oh-my-zsh.sh"
 
 ### User configuration
+export LESS='-i'
 bindkey -v
 
 if hash xdg-open 2>/dev/null; then
