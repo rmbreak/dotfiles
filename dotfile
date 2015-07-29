@@ -9,6 +9,7 @@ declare -A MODULES=(
   ["vim"]="install_vim"
   ["zsh"]="install_zsh"
   ["xdg"]="install_xdg"
+  ["roxterm"]="install_roxterm"
 )
 
 function usage() {
@@ -64,6 +65,10 @@ function install_xdg() {
   [[ -e "$HOME/.config/user-dirs.dirs" ]] && rm -f "$HOME/.config/user-dirs.dirs"
 
   stow xdg
+}
+
+function install_roxterm() {
+  stow roxterm
 }
 ########## end installers ###########
 

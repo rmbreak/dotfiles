@@ -1,0 +1,5 @@
+[roxterm options]
+warn_close=1
+encoding=UTF-8
+colour_scheme=Tango
+prefer_dark_theme=0

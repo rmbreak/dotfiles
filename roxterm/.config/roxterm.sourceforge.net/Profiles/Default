@@ -1,0 +1,6 @@
+[roxterm profile]
+colour_scheme=
+font=Droid Sans Mono for Powerline 12
+scrollback_lines=10000
+scroll_on_keystroke=1
+term=xterm-256color
