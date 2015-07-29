@@ -8,3 +8,5 @@ audible_bell=0
 background_type=2
 saturation=0.104348
 disable_menu_shortcuts=0
+width=160
+height=42
