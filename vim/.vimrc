@@ -38,6 +38,7 @@ let maplocalleader = "\\"
 " }}}
 " Basic options ---------------------------- {{{
 syntax on
+set guifont=Droid\ Sans\ Mono\ for\ Powerline\ 12"
 set encoding=utf-8
 set expandtab
 set clipboard+=unnamed
