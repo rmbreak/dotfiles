@@ -6,3 +6,4 @@ fi
 # User defined functions and aliases
 export LESS='-iFRX'
 alias la='ls -al'
+alias c='clear'

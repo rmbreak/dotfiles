@@ -65,8 +65,9 @@ if hash xdg-open 2>/dev/null; then
     }
 fi
 
-alias tmux="tmux -2"
+alias c='clear'
 alias itt='img2txt'
+alias tmux='tmux -2'
 
 alias grep="grep --color=always $GREP_OPTIONS"
 unset GREP_OPTIONS

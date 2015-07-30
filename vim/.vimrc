@@ -4,6 +4,7 @@ set t_Co=256 " Support 256 colors
 
 " Plugins ---------------------------- {{{
 call plug#begin('~/.vim/plugged')
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'bling/vim-airline'
 Plug 'godlygeek/tabular'
 Plug 'reedes/vim-thematic'
