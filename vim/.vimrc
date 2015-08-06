@@ -167,6 +167,14 @@ let base16colorspace=256
 colorscheme base16-default
 hi Normal ctermbg=none
 
+hi clear CursorLine
+hi CursorLineNR cterm=bold gui=bold ctermfg=10 guifg=#A1B56C
+augroup cusorline_color
+    au!
+    au ColorScheme * hi clear CursorLine
+    au ColorScheme * hi CursorLineNR cterm=bold gui=bold ctermfg=10 guifg=#A1B56C
+augroup END
+
 " Resize splits when window is resized
 au VimResized * :wincmd =
 
