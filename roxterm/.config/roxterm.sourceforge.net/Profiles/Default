@@ -11,3 +11,4 @@ disable_menu_shortcuts=1
 width=160
 height=42
 disable_tab_menu_shortcuts=1
+exit_action=0
