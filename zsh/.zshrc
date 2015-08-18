@@ -89,6 +89,6 @@ BASE16_SHELL="$HOME/.config/base16-shell/base16-default.dark.sh"
 
 function journal() {
     local year_month="$(date +%Y)/$(date +%m)"
-    [[ -d "$HOME/journal/$year_month/" ]] || mkdir -p "$HOME/journal/$year_month/"
-    ${EDITOR:-vi} "$HOME/journal/$year_month/$(date +%d)"
+    [[ -d "$HOME/documents/journal/$year_month/" ]] || mkdir -p "$HOME/documents/journal/$year_month/"
+    ${EDITOR:-vi} "$HOME/documents/journal/$year_month/$(date +%d)"
 }
