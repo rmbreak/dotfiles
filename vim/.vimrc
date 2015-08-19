@@ -26,6 +26,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-commentary'
+Plug 'mustache/vim-mustache-handlebars'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'majutsushi/tagbar'
@@ -181,7 +182,7 @@ au VimResized * :wincmd =
 nnoremap <F1> <nop>
 
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-nnoremap <leader>ef :execute ":vsplit " . $HOME . "/.vim/ftplugin/" . &filetype . ".vim"<cr>
+nnoremap <leader>ef :execute ":vsplit " . $HOME . "/.vim/ftplugin/" . split(&filetype, '\.')[-1] . ".vim"<cr>
 nnoremap <leader>es :execute ":vsplit " . $HOME . "/.zshrc"<cr>
 
 " j and k within a wrap
