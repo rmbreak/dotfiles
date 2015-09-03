@@ -92,3 +92,11 @@ function journal() {
     [[ -d "$HOME/documents/journal/$year_month/" ]] || mkdir -p "$HOME/documents/journal/$year_month/"
     ${EDITOR:-vi} "$HOME/documents/journal/$year_month/$(date +%d)"
 }
+
+function tm() {
+    if [[ $# -gt 0 ]]; then
+        command tmux -2 new -s "$1" -n ''
+    else
+        command tmux -2 new -n ''
+    fi
+}
