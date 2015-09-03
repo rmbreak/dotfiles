@@ -1,6 +1,6 @@
 [roxterm profile]
 colour_scheme=
-font=Droid Sans Mono for Powerline 12
+font=Hack 12
 scrollback_lines=10000
 scroll_on_keystroke=1
 term=xterm-256color
@@ -12,3 +12,10 @@ width=160
 height=42
 disable_tab_menu_shortcuts=1
 exit_action=0
+win_title=\s
+always_show_tabs=0
+hide_menubar=1
+show_add_tab_btn=0
+scrollbar_pos=1
+cursor_shape=1
+cursor_blink_mode=0
