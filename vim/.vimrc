@@ -126,6 +126,7 @@ let g:vim_json_syntax_conceal = 0
 " Pymode  ------------------------ {{{
 let g:pymode_indent = 1
 let g:pymode_rope = 0
+let g:pymode_lint_write = 0
 " }}}
 " Tagbar  ------------------------ {{{
 nmap <silent> <f5> :TagbarToggle<cr>
