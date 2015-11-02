@@ -1,6 +1,8 @@
-set nocompatible
+if !has("nvim")
+    set nocompatible
+    set t_Co=256 " Support 256 colors
+endif
 filetype off
-set t_Co=256 " Support 256 colors
 
 " Plugins ---------------------------- {{{
 call plug#begin('~/.vim/plugged')
@@ -12,6 +14,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'chriskempson/base16-vim'
 Plug 'wting/rust.vim'
 Plug 'elzr/vim-json'
+Plug 'kchmck/vim-coffee-script'
 " Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer --system-libclang' }
 Plug 'fatih/vim-go'
 Plug 'kien/ctrlp.vim'
@@ -27,7 +30,9 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-commentary'
 Plug 'mustache/vim-mustache-handlebars'
-Plug 'SirVer/ultisnips'
+if !has("nvim")
+    Plug 'SirVer/ultisnips'
+endif
 Plug 'honza/vim-snippets'
 Plug 'majutsushi/tagbar'
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
@@ -207,5 +212,7 @@ nnoremap <leader>hs :set hlsearch!<cr>
 nnoremap n nzzzv
 nnoremap N Nzzzv
 
-" Disable beeping
-set t_vb=
+if !has("nvim")
+    " Disable beeping
+    set t_vb=
+endif
