@@ -14,7 +14,7 @@ Plug 'wting/rust.vim'
 Plug 'elzr/vim-json'
 " Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer --system-libclang' }
 Plug 'fatih/vim-go'
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'klen/python-mode', { 'for': 'python' }
 Plug 'mileszs/ack.vim', { 'on': 'Ack' }
