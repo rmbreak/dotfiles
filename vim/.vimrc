@@ -17,7 +17,7 @@ Plug 'elzr/vim-json'
 Plug 'kchmck/vim-coffee-script'
 " Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer --system-libclang' }
 Plug 'fatih/vim-go'
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'klen/python-mode', { 'for': 'python' }
 Plug 'mileszs/ack.vim', { 'on': 'Ack' }
