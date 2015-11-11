@@ -19,3 +19,5 @@ show_add_tab_btn=0
 scrollbar_pos=1
 cursor_shape=1
 cursor_blink_mode=0
+backspace_binding=0
+delete_binding=0

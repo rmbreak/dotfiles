@@ -100,3 +100,5 @@ function tm() {
         command tmux -2 new -n ''
     fi
 }
+
+[ -e "$HOME/.projects" ] && source "$HOME/.projects"
