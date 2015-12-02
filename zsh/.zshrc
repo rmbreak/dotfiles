@@ -101,4 +101,18 @@ function tm() {
     fi
 }
 
+function j() {
+    if [[ $# -gt 0 ]]; then
+        cd "$1"
+        local changed_dir=true
+    fi
+
+    local file="$(fzf)"
+    if [[ -n "$file" ]]; then
+        cd "$(dirname "$file")"
+    elif ! [[ -z "$changed_dir" ]]; then
+        cd ..
+    fi
+}
+
 [ -e "$HOME/.projects" ] && source "$HOME/.projects"

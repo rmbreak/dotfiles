@@ -9,6 +9,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'bling/vim-airline'
 Plug 'godlygeek/tabular'
+Plug 'pearofducks/ansible-vim'
 Plug 'reedes/vim-thematic'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'chriskempson/base16-vim'
