@@ -116,3 +116,6 @@ function j() {
 }
 
 [ -e "$HOME/.projects" ] && source "$HOME/.projects"
+
+# alias vim to nvim if nvim exists
+command -v nvim &>/dev/null && alias vim=nvim
