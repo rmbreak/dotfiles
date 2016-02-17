@@ -7,7 +7,8 @@ filetype off
 " Plugins ---------------------------- {{{
 call plug#begin('~/.vim/plugged')
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'godlygeek/tabular'
 Plug 'pearofducks/ansible-vim'
 Plug 'reedes/vim-thematic'
@@ -51,6 +52,7 @@ set encoding=utf-8
 set expandtab
 set clipboard+=unnamed
 set list
+set mouse=a
 set listchars=tab:▸\ 
 set cursorline
 set hlsearch
