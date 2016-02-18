@@ -44,6 +44,7 @@ let maplocalleader = "\\"
 " Plugins ---------------------------- {{{
 "   Init ---------------------------- {{{
 call plug#begin('~/.vim/plugged')
+
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -77,6 +78,7 @@ Plug 'honza/vim-snippets'
 Plug 'majutsushi/tagbar'
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+
 call plug#end()
 "   }}}
 " Plugin: NERDTree --------------------------- {{{
@@ -208,7 +210,10 @@ augroup trailing
 augroup END
 
 " resize splits when window is resized
-au VimResized * :wincmd =
+augroup window_resize
+    au!
+    au VimResized * :wincmd =
+augroup END
 " }}}
 " Colors ---------------------------- {{{
 set background=dark
