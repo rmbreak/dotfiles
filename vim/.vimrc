@@ -1,10 +1,48 @@
-if !has("nvim")
-    set nocompatible
-    set t_Co=256 " Support 256 colors
-endif
-filetype off
+set nocompatible
 
+" Basic Options ---------------------------- {{{
+""" To get more information about these options,
+""" type :help '<option>' where <option> is a
+""" set option.
+"""
+""" Example: :help 'expandtab'
+"""
+set guifont=Droid\ Sans\ Mono\ for\ Powerline\ 12"
+set t_vb= " Disable beeping
+set t_Co=256 " Support 256 colors
+set encoding=utf-8
+set expandtab
+set clipboard+=unnamed
+set list
+set mouse=a
+set listchars=tab:▸\ 
+set cursorline
+set hlsearch
+set wildmenu
+set ignorecase
+set smartcase
+set shortmess+=I
+set number
+set splitright
+set foldlevelstart=99
+set splitbelow
+set smartindent
+set cinoptions=g0(0
+set softtabstop=4
+set tabstop=4
+set shiftwidth=4
+set wrap
+set notimeout
+set ttimeout
+set ttimeoutlen=10
+set autoread
+set laststatus=2 " always display the statusline in all windows
+set noshowmode " hide the default mode text (e.g. -- INSERT -- below the statusline)
+let mapleader = ","
+let maplocalleader = "\\"
+" }}}
 " Plugins ---------------------------- {{{
+"   Init ---------------------------- {{{
 call plug#begin('~/.vim/plugged')
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'vim-airline/vim-airline'
@@ -40,41 +78,94 @@ Plug 'majutsushi/tagbar'
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 call plug#end()
-" }}}
-" Leader ---------------------------- {{{
-let mapleader = ","
-let maplocalleader = "\\"
-" }}}
-" Basic options ---------------------------- {{{
-syntax on
-set guifont=Droid\ Sans\ Mono\ for\ Powerline\ 12"
-set encoding=utf-8
-set expandtab
-set clipboard+=unnamed
-set list
-set mouse=a
-set listchars=tab:▸\ 
-set cursorline
-set hlsearch
-set wildmenu
-set ignorecase
-set smartcase
-set shortmess+=I
-set number
-set splitright
-set foldlevelstart=99
-set splitbelow
-set smartindent
-set cinoptions=g0(0
-set softtabstop=4
-set tabstop=4
-set shiftwidth=4
-set wrap
-" }}}
-" NERDTree --------------------------- {{{
+"   }}}
+" Plugin: NERDTree --------------------------- {{{
 noremap <F2> :NERDTreeToggle<cr>
+"   }}}
+" Plugin: Rainbow Parens --------------------- {{{
+augroup rainbow_parens
+    au!
+    au Syntax * RainbowParenthesesLoadRound
+    au Syntax * RainbowParenthesesLoadSquare
+    au Syntax * RainbowParenthesesLoadBraces
+augroup END
+
+noremap <leader>R :RainbowParenthesesToggle<cr>
 " }}}
-" List Toggles ---------------------- {{{
+" Plugin: Syntastic --------------------- {{{
+let g:syntastic_check_on_wq = 0
+let g:syntastic_error_symbol = '✗'
+let g:syntastic_warning_symbol = '!'
+" }}}
+" Plugin: Airline --------------------- {{{
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+let g:airline_theme='bubblegum'
+" }}}
+" Plugin: JSON ------------------------ {{{
+let g:vim_json_syntax_conceal = 0
+" }}}
+" Plugin: Pymode  ------------------------ {{{
+let g:pymode_indent = 1
+let g:pymode_rope = 0
+let g:pymode_lint_write = 0
+" }}}
+" Plugin: Tagbar  ------------------------ {{{
+nmap <silent> <f5> :TagbarToggle<cr>
+" }}}
+" Plugin: YouCompleteMe  ------------------------ {{{
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+" }}}
+" Plugin: Ultisnips  ------------------------ {{{
+let g:UltiSnipsExpandTrigger = "<c-k>"
+let g:UltiSnipsJumpForwardTrigger = "<c-k>"
+let g:UltiSnipsJumpBackwardTrigger = "<c-z>"
+" }}}
+" }}}
+" General Mappings ---------------------- {{{
+"disable f1 opening help pages
+nnoremap <F1> <nop>
+inoremap <F1> <nop>
+
+" j and k within a wrap
+noremap j gj
+noremap k gk
+noremap gj j
+noremap gk k
+
+" easier buffer navigation
+noremap <c-h> <c-w>h
+noremap <c-j> <c-w>j
+noremap <c-k> <c-w>k
+noremap <c-l> <c-w>l
+
+" Keep search matches in the middle of the window and open fold
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" removes all windows except (t)his (w)indow
+nnoremap <leader>tw :on<cr>
+
+" toggle search highlighting
+nnoremap <leader>hs :set hlsearch!<cr>
+
+" source current line and selection
+vnoremap <leader>S y:execute @@<cr>:echo 'Sourced selection.'<cr>
+nnoremap <leader>S ^yg_y:execute @@<cr>:echo 'Sourced line.'<cr>
+
+" save file using sudo
+cnoremap w!! w !sudo tee % > /dev/null
+
+" clean trailing whitespace
+nnoremap <leader>ww mz:%s/\s\+$//<cr>:let @/=''<cr>`z
+
+" shortcuts for opening splits of files
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>ef :execute ":vsplit " . $HOME . "/.vim/ftplugin/" . split(&filetype, '\.')[-1] . ".vim"<cr>
+nnoremap <leader>es :execute ":vsplit " . $HOME . "/.zshrc"<cr>
+" }}}
+" Functions ---------------------- {{{
+"   List Toggles ---------------------- {{{
 function! GetBufferList()
   redir =>buflist
   silent! ls
@@ -108,70 +199,18 @@ endfunction
 nmap <silent> <f3> :call ToggleList("Location List", 'l')<cr>
 nmap <silent> <f4> :call ToggleList("Quickfix List", 'c')<cr>
 " }}}
-" Rainbow Parens --------------------- {{{
-augroup rainbow_parens
-    au!
-    au Syntax * RainbowParenthesesLoadRound
-    au Syntax * RainbowParenthesesLoadSquare
-    au Syntax * RainbowParenthesesLoadBraces
-augroup END
-
-noremap <leader>R :RainbowParenthesesToggle<cr>
 " }}}
-" Syntastic --------------------- {{{
-let g:syntastic_check_on_wq = 0
-let g:syntastic_error_symbol = '✗'
-let g:syntastic_warning_symbol = '!'
-" }}}
-" Airline --------------------- {{{
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
-let g:airline_theme='bubblegum'
-" }}}
-" JSON ------------------------ {{{
-let g:vim_json_syntax_conceal = 0
-" }}}
-" Pymode  ------------------------ {{{
-let g:pymode_indent = 1
-let g:pymode_rope = 0
-let g:pymode_lint_write = 0
-" }}}
-" Tagbar  ------------------------ {{{
-nmap <silent> <f5> :TagbarToggle<cr>
-" }}}
-" YouCompleteMe  ------------------------ {{{
-let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
-" }}}
-" Ultisnips  ------------------------ {{{
-let g:UltiSnipsExpandTrigger = "<c-k>"
-let g:UltiSnipsJumpForwardTrigger = "<c-k>"
-let g:UltiSnipsJumpBackwardTrigger = "<c-z>"
-" }}}
-
-filetype plugin indent on
-vnoremap <leader>S y:execute @@<cr>:echo 'Sourced selection.'<cr>
-nnoremap <leader>S ^yg_y:execute @@<cr>:echo 'Sourced line.'<cr>
-
-cnoremap w!! w !sudo tee > /dev/null %
-
-set notimeout
-set ttimeout
-set ttimeoutlen=10
-
-set autoread
-
+" Autocmds ---------------------- {{{
 augroup trailing
     au!
     au InsertEnter * :set listchars-=trail:¬
     au InsertLeave * :set listchars+=trail:¬
 augroup END
 
-" Clean trailing whitespace
-nnoremap <leader>ww mz:%s/\s\+$//<cr>:let @/=''<cr>`z
-
-set laststatus=2 " Always display the statusline in all windows
-set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
-
+" resize splits when window is resized
+au VimResized * :wincmd =
+" }}}
+" Colors ---------------------------- {{{
 set background=dark
 let base16colorspace=256
 colorscheme base16-default
@@ -184,38 +223,4 @@ augroup cusorline_color
     au ColorScheme * hi clear CursorLine
     au ColorScheme * hi CursorLineNR cterm=bold gui=bold ctermfg=10 guifg=#A1B56C
 augroup END
-
-" Resize splits when window is resized
-au VimResized * :wincmd =
-
-nnoremap <F1> <nop>
-
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-nnoremap <leader>ef :execute ":vsplit " . $HOME . "/.vim/ftplugin/" . split(&filetype, '\.')[-1] . ".vim"<cr>
-nnoremap <leader>es :execute ":vsplit " . $HOME . "/.zshrc"<cr>
-
-" j and k within a wrap
-noremap j gj
-noremap k gk
-noremap gj j
-noremap gk k
-
-" Easy buffer navigation
-noremap <c-h> <c-w>h
-noremap <c-j> <c-w>j
-noremap <c-k> <c-w>k
-noremap <c-l> <c-w>l
-
-" Close all but this window
-nnoremap <leader>tw :on<cr>
-
-nnoremap <leader>hs :set hlsearch!<cr>
-
-" Keep search matches in the middle of the window and open fold
-nnoremap n nzzzv
-nnoremap N Nzzzv
-
-if !has("nvim")
-    " Disable beeping
-    set t_vb=
-endif
+" }}}
