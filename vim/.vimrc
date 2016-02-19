@@ -46,94 +46,88 @@ call plug#begin('~/.vim/plugged')
 Plug 'rmbreak/vim-tmux-navigator'
 
 """ Source: vim-airline/vim-airline
-Plug 'vim-airline/vim-airline'
+Plug 'rmbreak/vim-airline'
 
 """ Source: vim-airline/vim-airline-themes
-Plug 'vim-airline/vim-airline-themes'
+Plug 'rmbreak/vim-airline-themes'
 
 """ Source: godlygeek/tabular
-Plug 'godlygeek/tabular'
+Plug 'rmbreak/tabular'
 
 """ Source: pearofducks/ansible-vim
-Plug 'pearofducks/ansible-vim'
+Plug 'rmbreak/ansible-vim'
 
 """ Source: reedes/vim-thematic
-Plug 'reedes/vim-thematic'
+Plug 'rmbreak/vim-thematic'
 
 """ Source: terryma/vim-multiple-cursors
-Plug 'terryma/vim-multiple-cursors'
+Plug 'rmbreak/vim-multiple-cursors'
 
 """ Source: chriskempson/base16-vim
-Plug 'chriskempson/base16-vim'
+Plug 'rmbreak/base16-vim'
 
 """ Source: wting/rust.vim
-Plug 'wting/rust.vim'
+Plug 'rmbreak/rust.vim'
 
 """ Source: elzr/vim-json
-Plug 'elzr/vim-json'
+Plug 'rmbreak/vim-json'
 
 """ Source: kchmck/vim-coffee-script
-Plug 'kchmck/vim-coffee-script'
+Plug 'rmbreak/vim-coffee-script'
 
-" Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer --system-libclang' }
 """ Source: fatih/vim-go
-Plug 'fatih/vim-go'
+Plug 'rmbreak/vim-go'
 
 """ Source: ctrlpvim/ctrlp.vim
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'rmbreak/ctrlp.vim'
 
 """ Source: kien/rainbow_parentheses.vim
-Plug 'kien/rainbow_parentheses.vim'
+Plug 'rmbreak/rainbow_parentheses.vim'
 
 """ Source: klen/python-mode
-Plug 'klen/python-mode', { 'for': 'python' }
+Plug 'rmbreak/python-mode', { 'for': 'python' }
 
 """ Source: mileszs/ack.vim
-Plug 'mileszs/ack.vim', { 'on': 'Ack' }
+Plug 'rmbreak/ack.vim', { 'on': 'Ack' }
 
 """ Source: scrooloose/nerdtree
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'rmbreak/nerdtree', { 'on': 'NERDTreeToggle' }
 
 """ Source: scrooloose/syntastic
-Plug 'scrooloose/syntastic'
+Plug 'rmbreak/syntastic'
 
 """ Source: suan/vim-instant-markdown
-Plug 'suan/vim-instant-markdown'
+Plug 'rmbreak/vim-instant-markdown'
 
 """ Source: tpope/vim-fugitive
-Plug 'tpope/vim-fugitive'
+Plug 'rmbreak/vim-fugitive'
 
 """ Source: tpope/vim-repeat
-Plug 'tpope/vim-repeat'
+Plug 'rmbreak/vim-repeat'
 
 """ Source: tpope/vim-surround
-Plug 'tpope/vim-surround'
+Plug 'rmbreak/vim-surround'
 
 """ Source: tpope/vim-speeddating
-Plug 'tpope/vim-speeddating'
+Plug 'rmbreak/vim-speeddating'
 
 """ Source: tpope/vim-commentary
-Plug 'tpope/vim-commentary'
+Plug 'rmbreak/vim-commentary'
 
 """ Source: mustache/vim-mustache-handlebars
-Plug 'mustache/vim-mustache-handlebars'
+Plug 'rmbreak/vim-mustache-handlebars'
 
 """ Source: honza/vim-snippets
-Plug 'honza/vim-snippets'
+Plug 'rmbreak/vim-snippets'
 
 """ Source: majutsushi/tagbar
-Plug 'majutsushi/tagbar'
+Plug 'rmbreak/tagbar'
 
 """ Source: pangloss/vim-javascript
-Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'rmbreak/vim-javascript', { 'for': 'javascript' }
 
 """ Source: plasticboy/vim-markdown
-Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-
-if !has("nvim")
-    """ Source: SirVer/ultisnips
-    Plug 'SirVer/ultisnips'
-endif
+Plug 'rmbreak/vim-markdown', { 'for': 'markdown' }
 
 call plug#end()
 "   }}}
