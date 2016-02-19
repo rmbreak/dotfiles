@@ -1,7 +1,11 @@
 set nocompatible
 
+" wondering where an unexpected option or marker was set? check ':verbose set
+"
+" textwidth?' as an example.
+
 " Basic Options ---------------------------- {{{
-""" To get more information about these options,
+""" to get more information about these options,
 """ type :help '<option>' where <option> is a
 """ set option.
 set guifont=Droid\ Sans\ Mono\ for\ Powerline\ 12"
@@ -12,7 +16,7 @@ set expandtab
 set clipboard+=unnamed
 set list
 set mouse=a
-set listchars=tab:▸\ 
+set listchars=trail:¬,tab:▸\ 
 set cursorline
 set hlsearch
 set wildmenu
@@ -33,8 +37,10 @@ set notimeout
 set ttimeout
 set ttimeoutlen=10
 set autoread
-set laststatus=2 " always display the statusline in all windows
-set noshowmode " hide the default mode text (e.g. -- INSERT -- below the statusline)
+" always display the statusline in all windows
+set laststatus=2
+" hide the default mode text (e.g. -- INSERT -- below the statusline)
+set noshowmode
 let mapleader = ","
 let maplocalleader = "\\"
 " }}}
@@ -43,6 +49,7 @@ let maplocalleader = "\\"
 call plug#begin('~/.vim/plugged')
 
 """ Source: christoomey/vim-tmux-navigator
+"" seamlessly move between tmux panes and vim windows
 Plug 'rmbreak/vim-tmux-navigator'
 
 """ Source: vim-airline/vim-airline
@@ -129,6 +136,12 @@ Plug 'rmbreak/vim-javascript', { 'for': 'javascript' }
 """ Source: plasticboy/vim-markdown
 Plug 'rmbreak/vim-markdown', { 'for': 'markdown' }
 
+""" Neovim only plugins
+if has("nvim")
+    """ Source: Shougo/deoplete.nvim
+    Plug 'rmbreak/deoplete.nvim'
+endif
+
 call plug#end()
 "   }}}
 " Plugin: NERDTree --------------------------- {{{
@@ -172,6 +185,9 @@ let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 let g:UltiSnipsExpandTrigger = "<c-k>"
 let g:UltiSnipsJumpForwardTrigger = "<c-k>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-z>"
+" }}}
+" Plugin: Deoplete  ------------------------ {{{
+let g:deoplete#enable_at_startup = 1
 " }}}
 " }}}
 " General Mappings ---------------------- {{{
