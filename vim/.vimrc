@@ -207,6 +207,16 @@ noremap <c-j> <c-w>j
 noremap <c-k> <c-w>k
 noremap <c-l> <c-w>l
 
+" easier buffer sizing
+noremap <s-left> :vertical resize -5<cr>
+noremap <s-right> :vertical resize +5<cr>
+noremap <s-down> :resize -5<cr>
+noremap <s-up> :resize +5<cr>
+
+" easier buffer switching
+noremap <tab> :bn<cr>
+noremap <s-tab> :bp<cr>
+
 " Keep search matches in the middle of the window and open fold
 nnoremap n nzzzv
 nnoremap N Nzzzv
