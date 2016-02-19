@@ -191,9 +191,15 @@ let g:deoplete#enable_at_startup = 1
 " }}}
 " }}}
 " General Mappings ---------------------- {{{
-"disable f1 opening help pages
+" disable f1 opening help pages
 nnoremap <F1> <nop>
 inoremap <F1> <nop>
+
+" disable going into ex mode by accident
+nnoremap Q <nop>
+
+" unjoin at cursor
+nnoremap K i<cr><esc>k:s/\s\+$//<cr>j
 
 " j and k within a wrap
 noremap j gj
