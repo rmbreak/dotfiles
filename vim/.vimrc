@@ -4,9 +4,6 @@ set nocompatible
 """ To get more information about these options,
 """ type :help '<option>' where <option> is a
 """ set option.
-"""
-""" Example: :help 'expandtab'
-"""
 set guifont=Droid\ Sans\ Mono\ for\ Powerline\ 12"
 set t_vb= " Disable beeping
 set t_Co=256 " Support 256 colors
@@ -45,39 +42,98 @@ let maplocalleader = "\\"
 "   Init ---------------------------- {{{
 call plug#begin('~/.vim/plugged')
 
-Plug 'christoomey/vim-tmux-navigator'
+""" Source: christoomey/vim-tmux-navigator
+Plug 'rmbreak/vim-tmux-navigator'
+
+""" Source: vim-airline/vim-airline
 Plug 'vim-airline/vim-airline'
+
+""" Source: vim-airline/vim-airline-themes
 Plug 'vim-airline/vim-airline-themes'
+
+""" Source: godlygeek/tabular
 Plug 'godlygeek/tabular'
+
+""" Source: pearofducks/ansible-vim
 Plug 'pearofducks/ansible-vim'
+
+""" Source: reedes/vim-thematic
 Plug 'reedes/vim-thematic'
+
+""" Source: terryma/vim-multiple-cursors
 Plug 'terryma/vim-multiple-cursors'
+
+""" Source: chriskempson/base16-vim
 Plug 'chriskempson/base16-vim'
+
+""" Source: wting/rust.vim
 Plug 'wting/rust.vim'
+
+""" Source: elzr/vim-json
 Plug 'elzr/vim-json'
+
+""" Source: kchmck/vim-coffee-script
 Plug 'kchmck/vim-coffee-script'
+
 " Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer --system-libclang' }
+""" Source: fatih/vim-go
 Plug 'fatih/vim-go'
+
+""" Source: ctrlpvim/ctrlp.vim
 Plug 'ctrlpvim/ctrlp.vim'
+
+""" Source: kien/rainbow_parentheses.vim
 Plug 'kien/rainbow_parentheses.vim'
+
+""" Source: klen/python-mode
 Plug 'klen/python-mode', { 'for': 'python' }
+
+""" Source: mileszs/ack.vim
 Plug 'mileszs/ack.vim', { 'on': 'Ack' }
+
+""" Source: scrooloose/nerdtree
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+
+""" Source: scrooloose/syntastic
 Plug 'scrooloose/syntastic'
+
+""" Source: suan/vim-instant-markdown
 Plug 'suan/vim-instant-markdown'
+
+""" Source: tpope/vim-fugitive
 Plug 'tpope/vim-fugitive'
+
+""" Source: tpope/vim-repeat
 Plug 'tpope/vim-repeat'
+
+""" Source: tpope/vim-surround
 Plug 'tpope/vim-surround'
+
+""" Source: tpope/vim-speeddating
 Plug 'tpope/vim-speeddating'
+
+""" Source: tpope/vim-commentary
 Plug 'tpope/vim-commentary'
+
+""" Source: mustache/vim-mustache-handlebars
 Plug 'mustache/vim-mustache-handlebars'
+
+""" Source: honza/vim-snippets
+Plug 'honza/vim-snippets'
+
+""" Source: majutsushi/tagbar
+Plug 'majutsushi/tagbar'
+
+""" Source: pangloss/vim-javascript
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+
+""" Source: plasticboy/vim-markdown
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+
 if !has("nvim")
+    """ Source: SirVer/ultisnips
     Plug 'SirVer/ultisnips'
 endif
-Plug 'honza/vim-snippets'
-Plug 'majutsushi/tagbar'
-Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 
 call plug#end()
 "   }}}
