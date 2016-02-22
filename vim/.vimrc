@@ -106,7 +106,7 @@ Plug 'rmbreak/syntastic'
 """ Source: suan/vim-instant-markdown
 Plug 'rmbreak/vim-instant-markdown', { 'do': '
             \ git clone git@github.com:rmbreak/instant-markdown-d.git &&
-            \ cd ./instant-markdown-d && sudo npm -g install' }
+            \ cd ./instant-markdown-d && npm -g install' }
 
 """ Source: tpope/vim-fugitive
 Plug 'rmbreak/vim-fugitive'

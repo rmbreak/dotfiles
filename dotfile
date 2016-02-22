@@ -12,6 +12,7 @@ declare -A MODULES=(
   ["roxterm"]="install_roxterm"
   ["base16"]="install_base16"
   ["gdb"]="install_gdb"
+  ["npm"]="install_npm"
 )
 
 function usage() {
@@ -79,6 +80,10 @@ function install_base16() {
 
 function install_gdb() {
   stow gdb
+}
+
+function install_npm() {
+  stow npm
 }
 ########## end installers ###########
 
