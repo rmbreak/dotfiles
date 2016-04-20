@@ -147,6 +147,8 @@ endif
 call plug#end()
 "   }}}
 " Plugin: NERDTree --------------------------- {{{
+let NERDTreeMapOpenVSplit = 'v'
+let NERDTreeMapOpenSplit = 'x'
 noremap <F2> :NERDTreeToggle<cr>
 "   }}}
 " Plugin: Rainbow Parens --------------------- {{{
