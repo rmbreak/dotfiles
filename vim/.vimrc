@@ -74,8 +74,9 @@ Plug 'mustache/vim-mustache-handlebars'
 Plug 'honza/vim-snippets'
 Plug 'majutsushi/tagbar'
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-Plug 'platicboy/vim-markdown', { 'for': 'markdown' }
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'leafgarland/typescript-vim'
+Plug 'Valloric/YouCompleteMe', { 'for': 'cpp', 'do': './install.py' }
 
 """ Source: suan/vim-instant-markdown
 Plug 'rmbreak/vim-instant-markdown', { 'do': '
@@ -83,9 +84,9 @@ Plug 'rmbreak/vim-instant-markdown', { 'do': '
             \ cd ./instant-markdown-d && npm -g install' }
 
 """ Neovim only plugins
-if has("nvim")
-    Plug 'Shougo/deoplete.nvim'
-endif
+" if has("nvim")
+"     Plug 'Shougo/deoplete.nvim'
+" endif
 
 call plug#end()
 "   }}}
@@ -99,6 +100,9 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '!'
 let g:syntastic_typescript_tsc_args = '--jsx react'
+let g:syntastic_cpp_include_dirs = ['include/']
+let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': ['cpp'] }
+command Check SyntasticCheck
 " }}}
 " Plugin: Airline --------------------- {{{
 let g:airline#extensions#tabline#enabled = 1
