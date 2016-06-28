@@ -28,7 +28,7 @@ set splitright
 set foldlevelstart=99
 set splitbelow
 set smartindent
-set cinoptions=g0(0
+set cinoptions=g0(0:0
 set softtabstop=4
 set tabstop=4
 set shiftwidth=4
@@ -76,7 +76,8 @@ Plug 'majutsushi/tagbar'
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'leafgarland/typescript-vim'
-Plug 'Valloric/YouCompleteMe', { 'for': 'cpp', 'do': './install.py' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --system-libclang', 'for': 'cpp' }
+Plug 'matze/vim-move'
 
 """ Source: suan/vim-instant-markdown
 Plug 'rmbreak/vim-instant-markdown', { 'do': '
@@ -121,7 +122,8 @@ let g:pymode_lint_write = 0
 nmap <silent> <f5> :TagbarToggle<cr>
 " }}}
 " Plugin: YouCompleteMe  ------------------------ {{{
-let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '$HOME/vim/.ycm_extra_conf.py'
+let g:ycm_extra_conf_globlist = ['./.ycm_extra_conf.py']
 " }}}
 " Plugin: Ultisnips  ------------------------ {{{
 let g:UltiSnipsExpandTrigger = "<c-k>"
@@ -133,6 +135,9 @@ let g:deoplete#enable_at_startup = 1
 " }}}
 " Plugin: Typescript  ------------------------ {{{
 let g:typescript_compiler_options = '--jsx react'
+" }}}
+" Plugin: Move  ------------------------ {{{
+" let g:move_key_modifier = ''
 " }}}
 " }}}
 " General Mappings ---------------------- {{{
