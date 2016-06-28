@@ -1,0 +1,7 @@
+Language: Cpp
+KeepEmptyLinesAtTheStartOfBlocks: false
+AlwaysBreakTemplateDeclarations: true
+IndentWidth: 4
+BreakBeforeBraces: Linux
+UseTab: Never
+AlignConsecutiveAssignments: true
