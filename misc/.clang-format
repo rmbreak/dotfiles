@@ -1,7 +1,10 @@
 Language: Cpp
-KeepEmptyLinesAtTheStartOfBlocks: false
-AlwaysBreakTemplateDeclarations: true
 IndentWidth: 4
-BreakBeforeBraces: Linux
 UseTab: Never
 AlignConsecutiveAssignments: true
+AllowShortFunctionsOnASingleLine: true
+AllowShortIfStatementsOnASingleLine: true
+AlwaysBreakTemplateDeclarations: true
+BreakBeforeBraces: Linux
+KeepEmptyLinesAtTheStartOfBlocks: false
+AllowAllParametersOfDeclarationOnNextLine: true
