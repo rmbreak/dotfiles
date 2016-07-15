@@ -250,7 +250,7 @@ augroup END
 " Colors ---------------------------- {{{
 set background=dark
 let base16colorspace=256
-colorscheme base16-default
+colorscheme base16-default-dark
 hi Normal ctermbg=none
 
 hi clear CursorLine
