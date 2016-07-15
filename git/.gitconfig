@@ -3,7 +3,7 @@
 	name = Mack Stump
 [alias]
     s  = status
-	lg = log --pretty=oneline --abbrev-commit --graph --all --decorate
+	lg = log --pretty=oneline --abbrev-commit --graph --all --decorate --show-signature
 [color]
 	ui = true
 [core]
