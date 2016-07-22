@@ -61,7 +61,7 @@ function install_vim() {
 function install_zsh() {
   [[ -e "$HOME/.zshrc" ]] && rm -f "$HOME/.zshrc"
 
-  stow zsh
+  stow --ignore=oh-my-zsh_custom zsh
 
   [[ -d "zsh/oh-my-zsh_custom" ]] && rsync -a zsh/oh-my-zsh_custom/* "$HOME/.oh-my-zsh/custom/"
 }
