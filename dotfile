@@ -62,6 +62,8 @@ function install_zsh() {
   [[ -e "$HOME/.zshrc" ]] && rm -f "$HOME/.zshrc"
 
   stow zsh
+
+  [[ -d "zsh/oh-my-zsh_custom" ]] && rsync -a zsh/oh-my-zsh_custom/* "$HOME/.oh-my-zsh/custom/"
 }
 
 function install_xdg() {
