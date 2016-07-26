@@ -9,7 +9,6 @@ declare -A MODULES=(
   ["vim"]="install_vim"
   ["zsh"]="install_zsh"
   ["xdg"]="install_xdg"
-  ["roxterm"]="install_roxterm"
   ["base16"]="install_base16"
   ["gdb"]="install_gdb"
   ["npm"]="install_npm"
@@ -70,10 +69,6 @@ function install_xdg() {
   [[ -e "$HOME/.config/user-dirs.dirs" ]] && rm -f "$HOME/.config/user-dirs.dirs"
 
   stow xdg
-}
-
-function install_roxterm() {
-  stow roxterm
 }
 
 function install_base16() {
