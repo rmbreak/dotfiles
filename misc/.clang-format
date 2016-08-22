@@ -1,8 +1,9 @@
 Language: Cpp
 IndentWidth: 4
 UseTab: Never
+AccessModifierOffset: -4
 AlignConsecutiveAssignments: true
-AllowShortFunctionsOnASingleLine: true
+AllowShortFunctionsOnASingleLine: false
 AllowShortIfStatementsOnASingleLine: true
 AlwaysBreakTemplateDeclarations: true
 BreakBeforeBraces: Linux
