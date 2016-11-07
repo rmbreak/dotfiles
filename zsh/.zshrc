@@ -120,4 +120,5 @@ function j() {
 # alias vim to nvim if nvim exists
 command -v nvim &>/dev/null && alias vim=nvim
 
-export PATH="$HOME/.npm-global/bin:$PATH"
+export PATH="$PATH:$HOME/.npm-global/bin"
+export PATH="$PATH:$HOME/.cargo/bin"
