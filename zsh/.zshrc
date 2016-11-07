@@ -48,7 +48,7 @@ ZSH_THEME="pygmalion-custom"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git gpg-agent jsontools pip web-search zsh-syntax-highlighting)
+plugins=(git gpg-agent jsontools pip web-search zsh-syntax-highlighting rust cargo gitignore)
 source "$ZSH/oh-my-zsh.sh"
 
 ### User configuration
@@ -122,3 +122,5 @@ command -v nvim &>/dev/null && alias vim=nvim
 
 export PATH="$PATH:$HOME/.npm-global/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
+
+alias cr='cargo run'
