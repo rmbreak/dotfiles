@@ -176,8 +176,11 @@ noremap <s-down> :resize -5<cr>
 noremap <s-up> :resize +5<cr>
 
 " easier buffer switching
-noremap <tab> :bn<cr>
-noremap <s-tab> :bp<cr>
+nnoremap <tab> :bn<cr>
+nnoremap <s-tab> :bp<cr>
+
+nnoremap <leader>f <c-i>
+nnoremap <leader>b <c-o>
 
 " Keep search matches in the middle of the window and open fold
 nnoremap n nzzzv
