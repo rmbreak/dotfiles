@@ -37,6 +37,7 @@ set notimeout
 set ttimeout
 set ttimeoutlen=10
 set autoread
+set hidden
 " always display the statusline in all windows
 set laststatus=2
 " hide the default mode text (e.g. -- INSERT -- below the statusline)
@@ -76,7 +77,7 @@ Plug 'majutsushi/tagbar'
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'leafgarland/typescript-vim'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --system-libclang', 'for': 'cpp' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --system-libclang --racer-completer', 'for': ['cpp', 'rust'] }
 Plug 'matze/vim-move'
 
 """ Source: suan/vim-instant-markdown
@@ -122,8 +123,13 @@ let g:pymode_lint_write = 0
 nmap <silent> <f5> :TagbarToggle<cr>
 " }}}
 " Plugin: YouCompleteMe  ------------------------ {{{
-let g:ycm_global_ycm_extra_conf = '$HOME/vim/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = $HOME . '/vim/.ycm_extra_conf.py'
 let g:ycm_extra_conf_globlist = ['./.ycm_extra_conf.py']
+let g:ycm_rust_src_path = $HOME . '/.multirust/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
+nnoremap <leader>gg :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>g<Bar> :vsplit <Bar> :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>g- :split <Bar> :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gd :YcmCompleter GetDoc<CR>
 " }}}
 " Plugin: Ultisnips  ------------------------ {{{
 let g:UltiSnipsExpandTrigger = "<c-k>"
