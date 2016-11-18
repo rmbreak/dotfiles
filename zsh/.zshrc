@@ -126,5 +126,7 @@ export PATH="$PATH:$HOME/.cargo/bin"
 alias cr='cargo run'
 alias l='ls -lh'
 alias la='ls -alh'
+alias time='command time'
+alias weather='curl http://wttr.in'
 
 export RUST_SRC_PATH="$HOME/.multirust/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src/"
