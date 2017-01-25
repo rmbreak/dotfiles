@@ -56,8 +56,10 @@ zstyle ':completion:*:*:kill:*:processes' command 'ps --forest -e -o pid,user,tt
 ##### END COMPLETION #####
 
 ##### PROMPT #####
+source $HOME/.zsh/zsh-git-prompt/zshrc.sh
+
 prompt_setup_pygmalion() {
-  base_prompt='%{$fg[magenta]%}%n%{$reset_color%}%{$fg[cyan]%}@%{$reset_color%}%{$fg[yellow]%}%m%{$reset_color%}%{$fg[red]%}:%{$reset_color%}%{$fg[cyan]%}%0~%{$reset_color%}%{$fg[red]%}|%{$reset_color%}'
+  base_prompt='%{$fg[magenta]%}%n%{$reset_color%}%{$fg[cyan]%}@%{$reset_color%}%{$fg[yellow]%}%m%{$reset_color%}%{$fg[red]%}:%{$reset_color%}%{$fg[cyan]%}%0~%{$reset_color%}%{$fg[red]%}|%{$reset_color%}$(git_super_status)'
   post_prompt='%{$fg[cyan]%}⇒%{$reset_color%}  '
 
   base_prompt_nocolor=$(echo "$base_prompt" | perl -pe "s/%\{[^}]+\}//g")
