@@ -5,8 +5,6 @@
 # h: equivalent to dirname
 export __GIT_PROMPT_DIR=${0:A:h}
 
-export GIT_PROMPT_EXECUTABLE=${GIT_PROMPT_EXECUTABLE:-"python"}
-
 # Initialize colors.
 autoload -U colors
 colors
@@ -40,56 +38,68 @@ function chpwd_update_git_vars() {
     update_current_git_vars
 }
 
-function update_current_git_vars() {
-    unset __CURRENT_GIT_STATUS
+function __gitstatus() {
+  local branch=
+  local ahead=0
+  local behind=0
+  local staged=0 #$(git diff --staged --diff-filter=u --name-status | wc -l)
+  local conflicts=0 #$(git diff --staged --diff-filter=U --name-status | wc -l)
+  local changed=$(git diff --diff-filter=u --name-status 2>/dev/null| wc -l)
+  local untracked=0
 
-    if [[ "$GIT_PROMPT_EXECUTABLE" == "python" ]]; then
-        local gitstatus="$__GIT_PROMPT_DIR/gitstatus.py"
-        _GIT_STATUS=`python ${gitstatus} 2>/dev/null`
-    fi
-    if [[ "$GIT_PROMPT_EXECUTABLE" == "haskell" ]]; then
-        _GIT_STATUS=`git status --porcelain --branch &> /dev/null | $__GIT_PROMPT_DIR/src/.bin/gitstatus`
-    fi
-     __CURRENT_GIT_STATUS=("${(@s: :)_GIT_STATUS}")
-	GIT_BRANCH=$__CURRENT_GIT_STATUS[1]
-	GIT_AHEAD=$__CURRENT_GIT_STATUS[2]
-	GIT_BEHIND=$__CURRENT_GIT_STATUS[3]
-	GIT_STAGED=$__CURRENT_GIT_STATUS[4]
-	GIT_CONFLICTS=$__CURRENT_GIT_STATUS[5]
-	GIT_CHANGED=$__CURRENT_GIT_STATUS[6]
-	GIT_UNTRACKED=$__CURRENT_GIT_STATUS[7]
+  branch=${$(git symbolic-ref HEAD 2>/dev/null):t}
+  [[ -z "$branch" ]] && branch=$(git rev-parse --short HEAD)
+
+  print "$branch $ahead $behind $staged $conflicts $changed $untracked"
 }
 
+function update_current_git_vars() {
+  unset __CURRENT_GIT_STATUS
+
+  if [ -d .git ] || git rev-parse --git-dir > /dev/null 2>&1; then
+    _GIT_STATUS=$(__gitstatus)
+  else
+    _GIT_STATUS=""
+  fi
+  __CURRENT_GIT_STATUS=("${(@s: :)_GIT_STATUS}")
+  GIT_BRANCH=$__CURRENT_GIT_STATUS[1]
+  GIT_AHEAD=$__CURRENT_GIT_STATUS[2]
+  GIT_BEHIND=$__CURRENT_GIT_STATUS[3]
+  GIT_STAGED=$__CURRENT_GIT_STATUS[4]
+  GIT_CONFLICTS=$__CURRENT_GIT_STATUS[5]
+  GIT_CHANGED=$__CURRENT_GIT_STATUS[6]
+  GIT_UNTRACKED=$__CURRENT_GIT_STATUS[7]
+}
 
 git_super_status() {
-	precmd_update_git_vars
+    precmd_update_git_vars
     if [ -n "$__CURRENT_GIT_STATUS" ]; then
-	  STATUS="$ZSH_THEME_GIT_PROMPT_PREFIX$ZSH_THEME_GIT_PROMPT_BRANCH$GIT_BRANCH%{${reset_color}%}"
-	  if [ "$GIT_BEHIND" -ne "0" ]; then
-		  STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_BEHIND$GIT_BEHIND%{${reset_color}%}"
-	  fi
-	  if [ "$GIT_AHEAD" -ne "0" ]; then
-		  STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_AHEAD$GIT_AHEAD%{${reset_color}%}"
-	  fi
-	  STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_SEPARATOR"
-	  if [ "$GIT_STAGED" -ne "0" ]; then
-		  STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_STAGED$GIT_STAGED%{${reset_color}%}"
-	  fi
-	  if [ "$GIT_CONFLICTS" -ne "0" ]; then
-		  STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_CONFLICTS$GIT_CONFLICTS%{${reset_color}%}"
-	  fi
-	  if [ "$GIT_CHANGED" -ne "0" ]; then
-		  STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_CHANGED$GIT_CHANGED%{${reset_color}%}"
-	  fi
-	  if [ "$GIT_UNTRACKED" -ne "0" ]; then
-		  STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_UNTRACKED%{${reset_color}%}"
-	  fi
-	  if [ "$GIT_CHANGED" -eq "0" ] && [ "$GIT_CONFLICTS" -eq "0" ] && [ "$GIT_STAGED" -eq "0" ] && [ "$GIT_UNTRACKED" -eq "0" ]; then
-		  STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_CLEAN"
-	  fi
-	  STATUS="$STATUS%{${reset_color}%}$ZSH_THEME_GIT_PROMPT_SUFFIX"
-	  echo "$STATUS"
-	fi
+      STATUS="$ZSH_THEME_GIT_PROMPT_PREFIX$ZSH_THEME_GIT_PROMPT_BRANCH$GIT_BRANCH%{${reset_color}%}"
+      if [ "$GIT_BEHIND" -ne "0" ]; then
+          STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_BEHIND$GIT_BEHIND%{${reset_color}%}"
+      fi
+      if [ "$GIT_AHEAD" -ne "0" ]; then
+          STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_AHEAD$GIT_AHEAD%{${reset_color}%}"
+      fi
+      STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_SEPARATOR"
+      if [ "$GIT_STAGED" -ne "0" ]; then
+          STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_STAGED$GIT_STAGED%{${reset_color}%}"
+      fi
+      if [ "$GIT_CONFLICTS" -ne "0" ]; then
+          STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_CONFLICTS$GIT_CONFLICTS%{${reset_color}%}"
+      fi
+      if [ "$GIT_CHANGED" -ne "0" ]; then
+          STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_CHANGED$GIT_CHANGED%{${reset_color}%}"
+      fi
+      if [ "$GIT_UNTRACKED" -ne "0" ]; then
+          STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_UNTRACKED%{${reset_color}%}"
+      fi
+      if [ "$GIT_CHANGED" -eq "0" ] && [ "$GIT_CONFLICTS" -eq "0" ] && [ "$GIT_STAGED" -eq "0" ] && [ "$GIT_UNTRACKED" -eq "0" ]; then
+          STATUS="$STATUS$ZSH_THEME_GIT_PROMPT_CLEAN"
+      fi
+      STATUS="$STATUS%{${reset_color}%}$ZSH_THEME_GIT_PROMPT_SUFFIX"
+      echo "$STATUS"
+    fi
 }
 
 # Default values for the appearance of the prompt. Configure at will.
@@ -104,5 +114,3 @@ ZSH_THEME_GIT_PROMPT_BEHIND="%{↓%G%}"
 ZSH_THEME_GIT_PROMPT_AHEAD="%{↑%G%}"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%{…%G%}"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}%{✔%G%}"
-
-
