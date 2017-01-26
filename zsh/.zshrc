@@ -121,6 +121,17 @@ if hash xdg-open 2>/dev/null; then
     }
 fi
 
+function gi() {
+    local langs=
+
+    for arg in "$@"; do
+        langs="$arg,$langs"
+    done
+    langs=${langs//%,/}
+
+    curl -s "https://www.gitignore.io/api/$langs"
+}
+
 alias history='fc -l 1'
 alias c='clear'
 alias itt='img2txt'
@@ -131,7 +142,7 @@ alias cr='cargo run'
 alias l='ls -lh'
 alias la='ls -alh'
 alias time='command time'
-alias weather='curl http://wttr.in'
+alias weather='curl -s http://wttr.in'
 command -v nvim &>/dev/null && alias vim=nvim
 
 # Base16 shell
