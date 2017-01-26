@@ -53,7 +53,7 @@ zstyle ':completion:*:*:*:*:processes' force-list always
 zstyle ':completion:*:*:*:*:processes' command 'ps -A -o pid,user,cmd'
 zstyle ':completion:*:*:*:*:processes' list-colors "=(#b) #([0-9]#)*=0=${color[green]}"
 zstyle ':completion:*:*:kill:*:processes' command 'ps --forest -e -o pid,user,tty,cmd'
-##### END COMPLETION #####
+# ##### END COMPLETION #####
 
 ##### PROMPT #####
 source $HOME/.zsh/zsh-git-prompt/zshrc.sh
