@@ -38,26 +38,11 @@ function chpwd_update_git_vars() {
     update_current_git_vars
 }
 
-function __gitstatus() {
-  local branch=
-  local ahead=0
-  local behind=0
-  local staged=0 #$(git diff --staged --diff-filter=u --name-status | wc -l)
-  local conflicts=0 #$(git diff --staged --diff-filter=U --name-status | wc -l)
-  local changed=$(git diff --diff-filter=u --name-status 2>/dev/null| wc -l)
-  local untracked=0
-
-  branch=${$(git symbolic-ref HEAD 2>/dev/null):t}
-  [[ -z "$branch" ]] && branch=$(git rev-parse --short HEAD)
-
-  print "$branch $ahead $behind $staged $conflicts $changed $untracked"
-}
-
 function update_current_git_vars() {
   unset __CURRENT_GIT_STATUS
 
   if [ -d .git ] || git rev-parse --git-dir > /dev/null 2>&1; then
-    _GIT_STATUS=$(__gitstatus)
+    _GIT_STATUS=$("$__GIT_PROMPT_DIR/repoinfo")
   else
     _GIT_STATUS=""
   fi
