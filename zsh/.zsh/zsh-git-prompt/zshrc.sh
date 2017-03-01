@@ -41,11 +41,7 @@ function chpwd_update_git_vars() {
 function update_current_git_vars() {
   unset __CURRENT_GIT_STATUS
 
-  if [ -d .git ] || git rev-parse --git-dir > /dev/null 2>&1; then
-    _GIT_STATUS=$("$__GIT_PROMPT_DIR/repoinfo")
-  else
-    _GIT_STATUS=""
-  fi
+  _GIT_STATUS=""
   __CURRENT_GIT_STATUS=("${(@s: :)_GIT_STATUS}")
   GIT_BRANCH=$__CURRENT_GIT_STATUS[1]
   GIT_AHEAD=$__CURRENT_GIT_STATUS[2]

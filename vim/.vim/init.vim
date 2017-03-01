@@ -1,0 +1,1 @@
+/home/mack/.dotfiles/vim/.vimrc
