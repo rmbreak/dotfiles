@@ -33,6 +33,8 @@ unalias_run-help() {
 alias help='run-help'
 
 ##### COMPLETION #####
+fpath+=~/.zfunc
+
 autoload -Uz compinit
 compinit
 
