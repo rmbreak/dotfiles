@@ -20,7 +20,6 @@ setopt vi
 
 autoload -Uz colors
 colors
-eval $(dircolors)
 
 autoload -Uz run-help
 autoload -Uz run-help-git
