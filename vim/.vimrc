@@ -75,10 +75,10 @@ Plug 'tpope/vim-commentary'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'honza/vim-snippets'
 Plug 'majutsushi/tagbar'
-Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'isRuslan/vim-es6', { 'for': 'javascript' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'leafgarland/typescript-vim'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --system-libclang --racer-completer', 'for': ['cpp', 'rust'] }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --system-libclang --racer-completer --tern-completer', 'for': ['cpp', 'rust', 'js'] }
 Plug 'matze/vim-move'
 
 """ Source: suan/vim-instant-markdown
@@ -102,6 +102,7 @@ noremap <F2> :NERDTreeToggle<cr>
 let g:syntastic_check_on_wq = 0
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '!'
+let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_typescript_tsc_args = '--jsx react'
 let g:syntastic_cpp_include_dirs = ['include/']
 let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': ['cpp'] }
@@ -145,6 +146,8 @@ let g:typescript_compiler_options = '--jsx react'
 " }}}
 " Plugin: Move  ------------------------ {{{
 " let g:move_key_modifier = ''
+" }}}
+" Plugin: Javascript  ------------------------ {{{
 " }}}
 " }}}
 " General Mappings ---------------------- {{{
