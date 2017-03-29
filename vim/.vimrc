@@ -19,6 +19,7 @@ set mouse=a
 set listchars=trail:¬,tab:▸\ 
 set cursorline
 set hlsearch
+set backupcopy=yes
 set wildmenu
 set ignorecase
 set smartcase
