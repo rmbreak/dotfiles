@@ -78,7 +78,7 @@ Plug 'majutsushi/tagbar'
 Plug 'isRuslan/vim-es6', { 'for': 'javascript' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'leafgarland/typescript-vim'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --system-libclang --racer-completer --tern-completer', 'for': ['cpp', 'rust', 'js'] }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --system-libclang --racer-completer --tern-completer', 'for': ['cpp', 'rust', 'javascript'] }
 Plug 'matze/vim-move'
 
 """ Source: suan/vim-instant-markdown
