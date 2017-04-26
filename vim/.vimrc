@@ -80,6 +80,7 @@ Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'leafgarland/typescript-vim'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --system-libclang --racer-completer --tern-completer', 'for': ['cpp', 'rust', 'javascript'] }
 Plug 'matze/vim-move'
+Plug 'benmills/vimux'
 
 """ Source: suan/vim-instant-markdown
 Plug 'rmbreak/vim-instant-markdown', { 'do': '
