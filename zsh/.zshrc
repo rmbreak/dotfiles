@@ -133,6 +133,27 @@ function gi() {
     curl -s "https://www.gitignore.io/api/$langs"
 }
 
+function compress() {
+    function usage() {
+        echo "usage: compress <path>"
+    }
+
+    if [[ $# -ne 1 ]]; then
+        usage
+        return -1
+    fi
+
+    local file=$(sed 's/\/\+$//' <<< "$1")
+    if [[ -f $file ]]; then
+        xz --threads=0 --keep "$file" > "${file##*/}.xz"
+    elif [[ -d $file ]]; then
+        tar -cf - "$file" | xz --threads=0 > "${file##*/}.tar.xz"
+    else
+        usage
+        return -1
+    fi
+}
+
 alias history='fc -l 1'
 alias c='clear'
 alias itt='img2txt'
