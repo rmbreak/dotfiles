@@ -134,6 +134,8 @@ function gi() {
 }
 
 function compress() {
+    setopt ksh_glob
+
     function usage() {
         echo "usage: compress <path>"
     }
@@ -143,7 +145,7 @@ function compress() {
         return -1
     fi
 
-    local file=$(sed 's/\/\+$//' <<< "$1")
+    local file=${1/%+(\/)}
     if [[ -f $file ]]; then
         xz --threads=0 --keep "$file" > "${file##*/}.xz"
     elif [[ -d $file ]]; then
@@ -152,6 +154,8 @@ function compress() {
         usage
         return -1
     fi
+
+    unsetopt ksh_glob
 }
 
 alias history='fc -l 1'
