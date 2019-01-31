@@ -98,20 +98,6 @@ function tm() {
     fi
 }
 
-function j() {
-    if [[ $# -gt 0 ]]; then
-        cd "$1"
-        local changed_dir=true
-    fi
-
-    local file="$(fzf)"
-    if [[ -n "$file" ]]; then
-        cd "$(dirname "$file")"
-    elif ! [[ -z "$changed_dir" ]]; then
-        cd ..
-    fi
-}
-
 if hash xdg-open 2>/dev/null; then
     function o open () {
         if [[ -d "$1" ]] && hash nautilus 2>/dev/null; then
@@ -177,3 +163,10 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 
 # Syntax highlighting
 source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+alias search="sk --ansi -i -c 'rg --line-number --color=always \"{}\"'"
+alias searchi="sk --ansi -i -c 'rg -i --line-number --color=always \"{}\"'"
+alias nvim_pluginstallall='nvim +PlugInstall +PlugClean +PlugUpdate +UpdateRemotePlugins'
+
+[ -f /usr/share/autojump/autojump.zsh ] && source /usr/share/autojump/autojump.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

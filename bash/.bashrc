@@ -7,3 +7,5 @@ fi
 export LESS='-iFRX'
 alias la='ls -al'
 alias c='clear'
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

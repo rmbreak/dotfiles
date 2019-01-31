@@ -24,6 +24,7 @@ set wildmenu
 set ignorecase
 set smartcase
 set shortmess+=I
+set relativenumber
 set number
 set splitright
 set foldlevelstart=99
@@ -51,64 +52,70 @@ let maplocalleader = "\\"
 call plug#begin('~/.vim/plugged')
 
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'chriskempson/base16-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'godlygeek/tabular'
-Plug 'pearofducks/ansible-vim'
-Plug 'reedes/vim-thematic'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'chriskempson/base16-vim'
-Plug 'wting/rust.vim'
-Plug 'elzr/vim-json'
-Plug 'kchmck/vim-coffee-script'
-Plug 'fatih/vim-go'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'klen/python-mode', { 'for': 'python' }
-Plug 'mileszs/ack.vim', { 'on': 'Ack' }
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-commentary'
-Plug 'mustache/vim-mustache-handlebars'
-Plug 'honza/vim-snippets'
-Plug 'majutsushi/tagbar'
-Plug 'isRuslan/vim-es6', { 'for': 'javascript' }
-Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-Plug 'leafgarland/typescript-vim'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --system-libclang --racer-completer --tern-completer', 'for': ['cpp', 'rust', 'javascript'] }
-Plug 'matze/vim-move'
+
+Plug 'w0rp/ale'
+Plug 'machakann/vim-highlightedyank'
+Plug 'airblade/vim-rooter'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
+
+" Completion plugins
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-tmux'
+Plug 'ncm2/ncm2-path'
+
+" LanguageClient enhancements
+"   Showing function signature and inline doc.
+Plug 'Shougo/echodoc.vim'
+
+Plug 'rust-lang/rust.vim'
+Plug 'fatih/vim-go'
+
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+Plug 'cespare/vim-toml'
+
+" TODO: explore
+" Plug 'reedes/vim-thematic'
 Plug 'benmills/vimux'
+" Plug 'matze/vim-move'
 
-""" Source: suan/vim-instant-markdown
-Plug 'rmbreak/vim-instant-markdown', { 'do': '
-            \ git clone git@github.com:rmbreak/instant-markdown-d.git &&
-            \ cd ./instant-markdown-d && npm -g install' }
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
-""" Neovim only plugins
-" if has("nvim")
-"     Plug 'Shougo/deoplete.nvim'
-" endif
+" Plug 'pearofducks/ansible-vim'
+" Plug 'wting/rust.vim'
+" Plug 'elzr/vim-json'
+" Plug 'kchmck/vim-coffee-script'
+" Plug 'fatih/vim-go'
+" Plug 'klen/python-mode', { 'for': 'python' }
+" Plug 'mustache/vim-mustache-handlebars'
+" Plug 'majutsushi/tagbar'
+" Plug 'isRuslan/vim-es6', { 'for': 'javascript' }
+" Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+" Plug 'leafgarland/typescript-vim'
 
 call plug#end()
 "   }}}
 " Plugin: NERDTree --------------------------- {{{
 let NERDTreeMapOpenVSplit = 'v'
 let NERDTreeMapOpenSplit = 'x'
-noremap <F2> :NERDTreeToggle<cr>
+noremap <F1> :NERDTreeToggle<cr>
 "   }}}
-" Plugin: Syntastic --------------------- {{{
-let g:syntastic_check_on_wq = 0
-let g:syntastic_error_symbol = '✗'
-let g:syntastic_warning_symbol = '!'
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_typescript_tsc_args = '--jsx react'
-let g:syntastic_cpp_include_dirs = ['include/']
-let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': ['cpp'] }
-command Check SyntasticCheck
-" }}}
 " Plugin: Airline --------------------- {{{
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
@@ -124,20 +131,6 @@ let g:pymode_lint_write = 0
 " }}}
 " Plugin: Tagbar  ------------------------ {{{
 nmap <silent> <f5> :TagbarToggle<cr>
-" }}}
-" Plugin: YouCompleteMe  ------------------------ {{{
-let g:ycm_global_ycm_extra_conf = $HOME . '/vim/.ycm_extra_conf.py'
-let g:ycm_extra_conf_globlist = ['./.ycm_extra_conf.py']
-let g:ycm_rust_src_path = $HOME . '/.multirust/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
-nnoremap <leader>gg :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>g<Bar> :vsplit <Bar> :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>g- :split <Bar> :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>gd :YcmCompleter GetDoc<CR>
-" }}}
-" Plugin: Ultisnips  ------------------------ {{{
-let g:UltiSnipsExpandTrigger = "<c-k>"
-let g:UltiSnipsJumpForwardTrigger = "<c-k>"
-let g:UltiSnipsJumpBackwardTrigger = "<c-z>"
 " }}}
 " Plugin: Deoplete  ------------------------ {{{
 let g:deoplete#enable_at_startup = 1
@@ -205,11 +198,11 @@ nnoremap <leader>S ^yg_y:execute @@<cr>:echo 'Sourced line.'<cr>
 cnoremap w!! w !sudo tee % > /dev/null
 
 " clean trailing whitespace
-nnoremap <leader>ww mz:%s/\s\+$//<cr>:let @/=''<cr>`z
+" nnoremap <leader>ww mz:%s/\s\+$//<cr>:let @/=''<cr>`z
 
 " shortcuts for opening splits of files
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-nnoremap <leader>ef :execute ":vsplit " . $HOME . "/.vim/ftplugin/" . split(&filetype, '\.')[-1] . ".vim"<cr>
+nnoremap <leader>ef :execute ":vsplit " . $HOME . "/.config/nvim/ftplugin/" . split(&filetype, '\.')[-1] . ".vim"<cr>
 nnoremap <leader>es :execute ":vsplit " . $HOME . "/.zshrc"<cr>
 " }}}
 " Functions ---------------------- {{{
@@ -265,6 +258,7 @@ augroup END
 set background=dark
 if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
+  set termguicolors
   source ~/.vimrc_background
 endif
 hi Normal ctermbg=none
@@ -277,3 +271,92 @@ augroup cusorline_color
     au ColorScheme * hi CursorLineNR cterm=bold gui=bold ctermfg=10 guifg=#A1B56C
 augroup END
 " }}}
+
+
+
+if executable('rg')
+    set grepprg=rg\ --no-heading\ --vimgrep
+    set grepformat=%f:%l:%c:%m
+endif
+
+noremap <leader>s :Rg
+let g:fzf_layout = { 'down': '~30%' }
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \ <bang>0)
+
+" Open hotkeys
+map <C-p> :Files<CR>
+nmap <leader>; :Buffers<CR>
+
+" Files command with preview window
+command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+
+" <leader><leader> toggles between buffers
+nnoremap <leader><leader> <c-^>
+
+" <leader>= reformats current tange
+nnoremap <leader>= :'<,'>RustFmtRange<cr>
+
+" <leader>q shows stats
+nnoremap <leader>q g<c-g>
+
+" M to make
+noremap M :!make -k -j4<cr>
+
+" Open new file adjacent to current file
+nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+
+" Linter
+let g:ale_sign_column_always = 1
+" only lint on save
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_save = 0
+let g:ale_lint_on_enter = 0
+let g:ale_rust_cargo_use_check = 1
+let g:ale_rust_cargo_check_all_targets = 1
+
+noremap <C-q> :confirm qall<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
+" language server protocol
+let g:LanguageClient_settingsPath = "/home/mack/.config/nvim/settings.json"
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['env', 'rls'],
+    \ }
+let g:LanguageClient_autoStart = 1
+nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+
+" rust
+let g:rustfmt_command = "rustfmt"
+let g:rustfmt_autosave = 1
+let g:rustfmt_emit_files = 1
+let g:rustfmt_fail_silently = 0
+let g:rust_clip_command = 'xclip -selection clipboard'
+let $RUST_SRC_PATH = systemlist("rustc --print sysroot")[0] . "/lib/rustlib/src/rust/src"
+
+" Completion
+autocmd BufEnter * call ncm2#enable_for_buffer()
+set completeopt=noinsert,menuone,noselect
+" tab to select
+" and don't hijack my enter key
+inoremap <expr><Tab> (pumvisible()?(empty(v:completed_item)?"\<C-n>":"\<C-y>"):"\<Tab>")
+inoremap <expr><CR> (pumvisible()?(empty(v:completed_item)?"\<CR>\<CR>":"\<C-y>"):"\<CR>")
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Quick-save
+nmap <leader>w :w<CR>
+
+set tags=.git/tags
+
+nmap <silent> L <Plug>(ale_lint)
+
+if has('nvim')
+	runtime! plugin/python_setup.vim
+endif
