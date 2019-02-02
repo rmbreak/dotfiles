@@ -119,7 +119,7 @@ noremap <F1> :NERDTreeToggle<cr>
 " Plugin: Airline --------------------- {{{
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme='bubblegum'
+let g:airline_theme='deus'
 " }}}
 " Plugin: JSON ------------------------ {{{
 let g:vim_json_syntax_conceal = 0
