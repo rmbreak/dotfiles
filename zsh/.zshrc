@@ -164,9 +164,23 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 # Syntax highlighting
 source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-alias search="sk --ansi -i -c 'rg --line-number --color=always \"{}\"'"
-alias searchi="sk --ansi -i -c 'rg -i --line-number --color=always \"{}\"'"
 alias nvim_pluginstallall='nvim +PlugInstall +PlugClean +PlugUpdate +UpdateRemotePlugins'
+
+function search() {
+    selected_line=$(sk --ansi -i -c 'rg --line-number --color=always "{}"')
+    split_lines=("${(@s/:/)selected_line}")
+    if [[ ${#split_lines} > 1 ]]; then
+        vim +${split_lines[2]} "${split_lines[1]}"
+    fi
+}
+
+function searchi() {
+    selected_line=$(sk --ansi -i -c 'rg -i --line-number --color=always "{}"')
+    split_lines=("${(@s/:/)selected_line}")
+    if [[ ${#split_lines} > 1 ]]; then
+        vim +${split_lines[2]} "${split_lines[1]}"
+    fi
+}
 
 [ -f /usr/share/autojump/autojump.zsh ] && source /usr/share/autojump/autojump.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
