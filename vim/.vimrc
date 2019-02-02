@@ -76,15 +76,21 @@ Plug 'roxma/nvim-yarp'
 
 " Completion plugins
 Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-tmux'
 Plug 'ncm2/ncm2-path'
+Plug 'ncm2/ncm2-go'
+Plug 'wellle/tmux-complete.vim'
 
-" LanguageClient enhancements
-"   Showing function signature and inline doc.
-Plug 'Shougo/echodoc.vim'
+" tmux-complete
+let g:tmuxcomplete#asyncomplete_source_options = {
+            \ 'name':      'tmuxcomplete',
+            \ 'config': {
+            \     'splitmode':      'ilines,words'
+            \     }
+            \ }
 
 Plug 'rust-lang/rust.vim'
-Plug 'fatih/vim-go'
+Plug 'mattn/webapi-vim'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
@@ -101,7 +107,6 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 " Plug 'wting/rust.vim'
 " Plug 'elzr/vim-json'
 " Plug 'kchmck/vim-coffee-script'
-" Plug 'fatih/vim-go'
 " Plug 'klen/python-mode', { 'for': 'python' }
 " Plug 'mustache/vim-mustache-handlebars'
 " Plug 'majutsushi/tagbar'
@@ -132,9 +137,6 @@ let g:pymode_lint_write = 0
 " Plugin: Tagbar  ------------------------ {{{
 nmap <silent> <f5> :TagbarToggle<cr>
 " }}}
-" Plugin: Deoplete  ------------------------ {{{
-let g:deoplete#enable_at_startup = 1
-" }}}
 " Plugin: Typescript  ------------------------ {{{
 let g:typescript_compiler_options = '--jsx react'
 " }}}
@@ -152,7 +154,7 @@ inoremap <F1> <nop>
 nnoremap Q <nop>
 
 " unjoin at cursor
-nnoremap K i<cr><esc>k:s/\s\+$//<cr>j
+" nnoremap K i<cr><esc>k:s/\s\+$//<cr>j
 
 " j and k within a wrap
 noremap j gj
@@ -312,12 +314,12 @@ nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 
 " Linter
 let g:ale_sign_column_always = 1
+let g:ale_sign_error = '⤫'
+let g:ale_sign_warning = '⚠'
 " only lint on save
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_save = 0
 let g:ale_lint_on_enter = 0
-let g:ale_rust_cargo_use_check = 1
-let g:ale_rust_cargo_check_all_targets = 1
 
 noremap <C-q> :confirm qall<CR>
 
@@ -325,28 +327,21 @@ noremap <C-q> :confirm qall<CR>
 " language server protocol
 let g:LanguageClient_settingsPath = "/home/mack/.config/nvim/settings.json"
 let g:LanguageClient_serverCommands = {
-    \ 'rust': ['env', 'rls'],
-    \ }
+            \ 'rust': ['rls'],
+            \ 'python': ['pyls'],
+            \ }
 let g:LanguageClient_autoStart = 1
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 
-" rust
-let g:rustfmt_command = "rustfmt"
-let g:rustfmt_autosave = 1
-let g:rustfmt_emit_files = 1
-let g:rustfmt_fail_silently = 0
-let g:rust_clip_command = 'xclip -selection clipboard'
-let $RUST_SRC_PATH = systemlist("rustc --print sysroot")[0] . "/lib/rustlib/src/rust/src"
-
 " Completion
 autocmd BufEnter * call ncm2#enable_for_buffer()
 set completeopt=noinsert,menuone,noselect
-" tab to select
-" and don't hijack my enter key
-inoremap <expr><Tab> (pumvisible()?(empty(v:completed_item)?"\<C-n>":"\<C-y>"):"\<Tab>")
-inoremap <expr><CR> (pumvisible()?(empty(v:completed_item)?"\<CR>\<CR>":"\<C-y>"):"\<CR>")
+
+" Set tab complete
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Quick-save
@@ -357,5 +352,5 @@ set tags=.git/tags
 nmap <silent> L <Plug>(ale_lint)
 
 if has('nvim')
-	runtime! plugin/python_setup.vim
+    runtime! plugin/python_setup.vim
 endif
