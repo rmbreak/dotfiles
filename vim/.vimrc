@@ -146,7 +146,6 @@ let g:typescript_compiler_options = '--jsx react'
 " }}}
 " General Mappings ---------------------- {{{
 " disable f1 opening help pages
-nnoremap <F1> <nop>
 inoremap <F1> <nop>
 
 " disable going into ex mode by accident
