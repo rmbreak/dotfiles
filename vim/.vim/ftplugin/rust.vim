@@ -7,6 +7,8 @@ let b:ale_rust_rls_toolchain = 'stable'
 let b:ale_rust_cargo_use_check = 1
 let b:ale_rust_cargo_check_all_targets = 1
 
+let b:ale_fixers = ['rustfmt']
+
 let g:rustfmt_command = "rustfmt"
 let g:rustfmt_autosave = 1
 let g:rustfmt_emit_files = 1

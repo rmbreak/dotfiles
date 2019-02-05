@@ -349,6 +349,7 @@ nmap <leader>w :w<CR>
 
 set tags=.git/tags
 
+" nmap <silent> L <Plug>(ale_lint)
 nmap <silent> L <Plug>(ale_lint)
 
 if has('nvim')
