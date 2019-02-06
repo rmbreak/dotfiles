@@ -341,6 +341,8 @@ set completeopt=noinsert,menuone,noselect
 
 " Set tab complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+" Don't hijack enter key
+inoremap <expr><CR> (pumvisible()?(empty(v:completed_item)?"\<CR>\<CR>":"\<CR>"):"\<CR>")
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -355,3 +357,4 @@ nmap <silent> L <Plug>(ale_lint)
 if has('nvim')
     runtime! plugin/python_setup.vim
 endif
+
