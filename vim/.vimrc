@@ -66,6 +66,7 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'airblade/vim-rooter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/vim-easy-align'
 
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
@@ -115,6 +116,9 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 " Plug 'leafgarland/typescript-vim'
 
 call plug#end()
+"   }}}
+" Plugin: vim-easy-align --------------------------- {{{
+xmap <Enter> <Plug>(EasyAlign)
 "   }}}
 " Plugin: NERDTree --------------------------- {{{
 let NERDTreeMapOpenVSplit = 'v'

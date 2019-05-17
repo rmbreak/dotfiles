@@ -2,7 +2,7 @@ HISTSIZE=200000
 SAVEHIST=200000
 HISTFILE=$HOME/.zsh_history
 
-export EDITOR='vim'
+export EDITOR='nvim'
 export LESS='-iFRX'
 export PAGER='less'
 export GOPATH="$HOME/godev"
