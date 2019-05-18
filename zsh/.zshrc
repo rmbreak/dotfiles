@@ -185,4 +185,4 @@ function searchi() {
 [ -f /usr/share/autojump/autojump.zsh ] && source /usr/share/autojump/autojump.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-alias docker_postgres='docker run -e POSTGRES_USER=mack -e POSTGRES_PASSWORD='' -p 5432:5432 -d postgres'
+alias docker_postgres='docker run --restart unless-stopped -e POSTGRES_USER=mack -e POSTGRES_PASSWORD='' -p 5432:5432 -d postgres'
