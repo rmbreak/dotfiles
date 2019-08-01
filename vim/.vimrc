@@ -1,4 +1,6 @@
 set nocompatible
+filetype plugin on
+syntax on
 
 " wondering where an unexpected option or marker was set? check ':verbose set
 "
@@ -103,6 +105,7 @@ Plug 'benmills/vimux'
 " Plug 'matze/vim-move'
 
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'vimwiki/vimwiki'
 
 " Plug 'pearofducks/ansible-vim'
 " Plug 'wting/rust.vim'
