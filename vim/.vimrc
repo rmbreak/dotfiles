@@ -15,7 +15,7 @@ set t_vb= " Disable beeping
 set t_Co=256 " Support 256 colors
 set encoding=utf-8
 set expandtab
-set clipboard+=unnamed
+set clipboard+=unnamedplus
 set list
 set mouse=a
 set listchars=trail:¬,tab:▸\ 
@@ -82,6 +82,8 @@ Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-path'
 Plug 'ncm2/ncm2-go'
 Plug 'wellle/tmux-complete.vim'
+
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 
 " tmux-complete
 let g:tmuxcomplete#asyncomplete_source_options = {

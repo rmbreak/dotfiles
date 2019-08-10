@@ -186,3 +186,8 @@ function searchi() {
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 alias docker_postgres='docker run --restart unless-stopped -e POSTGRES_USER=mack -e POSTGRES_PASSWORD='' -p 5432:5432 -d postgres'
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+alias sudo='sudo '
