@@ -191,3 +191,6 @@ alias docker_postgres='docker run --restart unless-stopped -e POSTGRES_USER=mack
 export PATH="$PATH:$HOME/.rvm/bin"
 
 alias sudo='sudo '
+
+source /home/mack/.config/broot/launcher/bash/br
+eval "$(starship init zsh)"

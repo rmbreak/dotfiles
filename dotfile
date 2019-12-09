@@ -12,6 +12,7 @@ declare -A MODULES=(
   ["base16"]="install_base16"
   ["gdb"]="install_gdb"
   ["npm"]="install_npm"
+  ["starship"]="install_starship"
 )
 
 function usage() {
@@ -81,6 +82,10 @@ function install_gdb() {
 
 function install_npm() {
   stow npm
+}
+
+function install_starship() {
+  stow starship
 }
 ########## end installers ###########
 
