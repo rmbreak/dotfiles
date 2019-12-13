@@ -192,5 +192,5 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 alias sudo='sudo '
 
-source /home/mack/.config/broot/launcher/bash/br
+source $HOME/.config/broot/launcher/bash/br
 eval "$(starship init zsh)"
