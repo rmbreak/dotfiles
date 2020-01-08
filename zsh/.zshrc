@@ -194,3 +194,5 @@ alias sudo='sudo '
 
 source $HOME/.config/broot/launcher/bash/br
 eval "$(starship init zsh)"
+
+source $HOME/.config/broot/launcher/bash/br
