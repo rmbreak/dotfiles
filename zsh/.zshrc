@@ -193,6 +193,10 @@ export PATH="$PATH:$HOME/.rvm/bin"
 alias sudo='sudo '
 
 source $HOME/.config/broot/launcher/bash/br
-eval "$(starship init zsh)"
 
-source $HOME/.config/broot/launcher/bash/br
+source "$HOME/.local/bin/aws_zsh_completer.sh"
+export AWS_PROFILE=dev
+
+alias gs='git status'
+
+eval "$(starship init zsh)"

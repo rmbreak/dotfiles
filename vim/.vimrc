@@ -120,6 +120,8 @@ Plug 'vimwiki/vimwiki'
 " Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 " Plug 'leafgarland/typescript-vim'
 
+Plug 'hashivim/vim-terraform'
+
 call plug#end()
 "   }}}
 " Plugin: vim-easy-align --------------------------- {{{

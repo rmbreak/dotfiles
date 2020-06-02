@@ -12,9 +12,19 @@ suffix = "⟫"
 style = "yellow"
 
 [directory]
-truncate_length = 0
+truncation_length = 0
 truncate_to_repo = false
 
 # Replace the "❯" symbol in the prompt with "➜"
 [character]     # The name of the module we are configuring is "character"
 symbol = "⇒"    # The "symbol" segment is being set to "⇒"
+error_symbol = "✗"
+use_symbol_for_status = true
+
+[[battery.display]]  # "bold red" style when capacity is between 0% and 15%
+threshold = 15
+style = "bold red"
+
+[[battery.display]]  # "bold yellow" style when capacity is between 15% and 40%
+threshold = 40
+style = "bold yellow"

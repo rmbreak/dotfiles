@@ -5,7 +5,7 @@ HISTFILE=$HOME/.zsh_history
 export EDITOR='nvim'
 export LESS='-iFRX'
 export PAGER='less'
-export GOPATH="$HOME/godev"
+export GOPATH="$HOME/.go"
 
 export RUST_SRC_PATH="$HOME/.multirust/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src/"
 
